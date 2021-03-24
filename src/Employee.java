@@ -1,45 +1,70 @@
-
 /**
  * Employee
  */
-import java.util.Scanner;
+
 public class Employee {
 
-    String name;
-    String address;
-    String type;
-    double month_wage;
-    double two_week_wage;
-    double comission;
+    private String name;
+    private String address;
+    private double timeCard;
 
-    public static void addEmployee() {
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Type the name of the employee");
-        System.out.println("Type the name of the employee");
-        System.out.println("Type of employee: [0 - Hourly | 1 - Salaried | 2 - Comissioned]");
-        System.out.println("Type the payment method");
-    }
-
-    public static void removeEmployee() {
+    // Método construtor
+    public Employee() {
         
     }
 
-    public static void editEmployee() {
+    public Employee(String name, String address, double timeCard) {
+        this.name = name;
+        this.address = address;
+        this.timeCard = timeCard;
+    }
+
+    public String printEmployeeInfo() {
+        return  "Name: " + this.name + 
+                "\nAdress: " + this.address + 
+                "\nTime Card: " + this.timeCard;
+    }
+
+    public String printEmployeeInfo(Employee employee) {
+        return  "Name: " + this.name + 
+                "\nAdress: " + this.address + 
+                "\nTime Card: " + this.timeCard +
+                "\n ----------------------------------" +
+                "\nName: " + employee.name + 
+                "\nAdress: " + employee.address + 
+                "\nTime Card: " + employee.timeCard;
+
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public void setTimeCard(double timeCard) {
+        
+        if(timeCard <= 0){
+            System.out.println("Valor incorreto");
+        }
+        
+        else{
+            this.timeCard = timeCard;
+        }
         
     }
 
-    public static void timecard() {
-        
+    public String getAddress() {
+        return address;
     }
 
-    public static void sale() {
-        
+    public String getName() {
+        return name;
     }
 
-    public static void feeServices() {
-        
+    public double getTimeCard() {
+        return timeCard;
     }
-
 }
-
