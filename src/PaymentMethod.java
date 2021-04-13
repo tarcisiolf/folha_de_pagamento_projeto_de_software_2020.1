@@ -1,13 +1,9 @@
 public class PaymentMethod {
     private String type;
-    private String id;
+    private String employeeID;
 
-    public PaymentMethod() {
-        
-    }
-
-    public PaymentMethod(String type, String id) {
+    public PaymentMethod(String type, String employeeID) {
         this.type = type;
-        this.id = id;
+        this.employeeID = employeeID;
     }
 }

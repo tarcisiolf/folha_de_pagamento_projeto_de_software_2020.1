@@ -8,6 +8,12 @@ public class Employee {
     private String address;
     private boolean filiated;
 
+    public Employee(String name, String address, boolean filiated)
+    {
+        this.name = name;
+        this.address = address;
+        this.filiated = filiated;
+    }
     public void setName(String name) {
         this.name = name;
     }

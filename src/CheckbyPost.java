@@ -2,7 +2,14 @@ public class CheckbyPost extends PaymentMethod{
     
     private double value;
     private String employeeAddress;
-    private String employeeID;
+
+
+    public CheckbyPost(String type, String employeeID, double value,
+    String employeeAddress) {
+        super(type, employeeID);
+        this.value = value;
+        this.employeeAddress = employeeAddress;
+    }
 
     public void setValue(double value) {
         this.value = value;
@@ -18,13 +25,5 @@ public class CheckbyPost extends PaymentMethod{
 
     public String getEmployeeAddress() {
         return employeeAddress;
-    }
-
-    public void setEmployeeID(String employeeID) {
-        this.employeeID = employeeID;
-    }
-
-    public String getEmployeeID() {
-        return employeeID;
     }
 }

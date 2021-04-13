@@ -1,9 +1,19 @@
-public class Deposity extends Employee{
+public class Deposity extends PaymentMethod{
+    
     private double value;
     private String accountType;
     private String agency;
     private String accountNumber;
-    private String employeeID;
+
+    public Deposity(String type, String employeeID, double value, 
+    String accountType, String agency, String accountNumber) {
+        super(type, employeeID);
+        this.value = value;
+        this.accountType = accountType;
+        this.agency = agency;
+        this.accountNumber = accountNumber; 
+    }
+
 
     public void setValue(double value) {
         this.value = value;
@@ -35,13 +45,5 @@ public class Deposity extends Employee{
 
     public String getAccountNumber() {
         return accountNumber;
-    }
-
-    public void setEmployeeID(String employeeID) {
-        this.employeeID = employeeID;
-    }
-
-    public String getEmployeeID() {
-        return employeeID;
     }
 }
