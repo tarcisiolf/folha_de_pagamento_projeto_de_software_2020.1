@@ -1,3 +1,5 @@
+package wage;
+
 public class Paycheck {
     private String id;
     private double wagewithoutDiscount;
