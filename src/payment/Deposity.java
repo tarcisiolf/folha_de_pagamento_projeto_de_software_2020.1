@@ -1,17 +1,22 @@
+package payment;
+
 public class Deposity extends PaymentMethod{
     
     private double value;
     private String accountType;
     private String agency;
     private String accountNumber;
+    private int bankNumber;
 
-    public Deposity(String type, String employeeID, double value, 
-    String accountType, String agency, String accountNumber) {
-        super(type, employeeID);
+
+    public Deposity(String type, String employeeID, String name, String date, double value, 
+    String accountType, String agency, String accountNumber, int bankNumber) {
+        super(type, employeeID, name, date);
         this.value = value;
         this.accountType = accountType;
         this.agency = agency;
-        this.accountNumber = accountNumber; 
+        this.accountNumber = accountNumber;
+        this.bankNumber = bankNumber;
     }
 
 
@@ -45,5 +50,13 @@ public class Deposity extends PaymentMethod{
 
     public String getAccountNumber() {
         return accountNumber;
+    }
+
+    public void setBankNumber(int bankNumber) {
+        this.bankNumber = bankNumber;
+    }
+
+    public int getBankNumber() {
+        return bankNumber;
     }
 }

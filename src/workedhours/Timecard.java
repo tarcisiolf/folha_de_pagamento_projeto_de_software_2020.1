@@ -1,3 +1,5 @@
+package workedhours;
+
 public class Timecard {
     private int numberTimecard;
     private String checkInTime;

@@ -1,18 +1,22 @@
+package employees;
+
+import workedhours.Timecard;
+
 public class Hourly extends Employee{
     
-    private double workedHours;
+    private Timecard timecard;
 
     public Hourly(String name, String address, boolean filiated,
-    double workedHours) {
+    Timecard timecard) {
         super(name, address, filiated);
-        this.workedHours = workedHours;
+        this.timecard = timecard;
     }
 
-    public void setWorkedHours(double workedHours) {
-        this.workedHours = workedHours;
+    public void setTimecard(Timecard timecard) {
+        this.timecard = timecard;
     }
 
-    public double getWorkedHours() {
-        return workedHours;
+    public Timecard getTimecard() {
+        return timecard;
     }
 }

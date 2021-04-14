@@ -1,18 +1,20 @@
+package employees;
+
 public class Comissioned extends Employee{
     
-    private double sales;
+    private Sales sale;
 
     public Comissioned(String name, String address, boolean filiated,
-    double sales) {
+    Sales sale) {
         super(name, address, filiated);
-        this.sales = sales;
+        this.sale = sale;
     }
 
-    public void setSales(double sales) {
-        this.sales = sales;
+    public void setSales(Sales sale) {
+        this.sale = sale;
     }
 
-    public double getSales() {
-        return sales;
+    public Sales getSales() {
+        return sale;
     }
 }

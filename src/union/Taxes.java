@@ -1,3 +1,5 @@
+package union;
+
 public class Taxes {
     private String type;
     private double value;
