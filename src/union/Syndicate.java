@@ -4,11 +4,9 @@ public class Syndicate {
    private int syndicateID = -1;
    private Taxes taxe;
 
-   public Syndicate(int syndicateID, Taxes taxe){
+   public Syndicate(int syndicateID){
 
       this.syndicateID = syndicateID;
-      this.taxe = taxe;
-     
    }
 
    public void setSyndicateID(int syndicateID) {

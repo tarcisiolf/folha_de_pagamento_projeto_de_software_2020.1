@@ -11,10 +11,9 @@ public class Paycheck {
     private double sales;
     private double normalTaxe;
 
-    public Paycheck(String employeeType, double baseSalary, double comission) {
+    public Paycheck(String employeeType, double baseSalary) {
         this.employeeType = employeeType;
         this.baseSalary = baseSalary;
-        this.comission = comission;
     }
 
     public void setEmployeeType(String employeeType) {
@@ -29,7 +28,7 @@ public class Paycheck {
         this.baseSalary = baseSalary;
     }
 
-    public double getbaseSalary() {
+    public double getBaseSalary() {
         return baseSalary;
     }
 
@@ -95,8 +94,8 @@ public class Paycheck {
         }
 
         else if(employeeType == "Hourly"){
-            hoursIn = workedHours.getCheckInTime();
-            hoursOut = workedHours.getExitTime();
+            hoursIn = workedHours.getTimeIn();
+            hoursOut = workedHours.getTimeOut();
             hours = workedHours.numberHours(hoursIn, hoursOut);
 
             if(hours > 8){

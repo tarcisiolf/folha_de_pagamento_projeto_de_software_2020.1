@@ -1,33 +1,37 @@
 package workedhours;
 
 public class Timecard {
-    private int numberTimecard;
-    private String checkInTime;
-    private String exitTime;
+    private int timecardNumber;
+    private String timeIn;
+    private String timeOut;
     private double numberHours;
 
-    public void setNumberTimecard(int numberTimecard) {
-        this.numberTimecard = numberTimecard;
+    public Timecard (){
+
+    }
+    
+    public void setTimecardNumber(int timecardNumber) {
+        this.timecardNumber = timecardNumber;
     }
 
-    public int getNumberTimecard() {
-        return numberTimecard;
+    public int getTimecardNumber() {
+        return timecardNumber;
     }
 
-    public void setCheckInTime(String checkInTime) {
-        this.checkInTime = checkInTime;
+    public void setTimeIn(String timeIn) {
+        this.timeIn = timeIn;
     }
 
-    public String getCheckInTime() {
-        return checkInTime;
+    public String getTimeIn() {
+        return timeIn;
     }
 
-    public void setExitTime(String exitTime) {
-        this.exitTime = exitTime;
+    public void setTimeOut(String timeOut) {
+        this.timeOut = timeOut;
     }
 
-    public String getExitTime() {
-        return exitTime;
+    public String getTimeOut() {
+        return timeOut;
     }
 
     public void setNumberHours(double time) {
