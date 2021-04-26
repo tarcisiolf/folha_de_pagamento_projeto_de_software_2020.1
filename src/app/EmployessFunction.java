@@ -84,11 +84,11 @@ public class EmployessFunction {
             System.out.println("Digite o valor da taxa mensal:");
             double monthlyTaxe = input.nextDouble();
             System.out.println("Digite o valor da taxa adicional:");
-            double aditionalTaxe = input.nextDouble();
+            double additionalTaxe = input.nextDouble();
             input.nextLine();
 
             Syndicate newSyndicate = new Syndicate(syndicateID);
-            Taxes newTaxe = new Taxes(monthlyTaxe, aditionalTaxe);
+            Taxes newTaxe = new Taxes(monthlyTaxe, additionalTaxe);
 
             newSyndicate.setTaxes(newTaxe);
             newEmployee.setSyndicate(newSyndicate);
@@ -97,7 +97,7 @@ public class EmployessFunction {
         else{
             newEmployee.setSyndicate(null);
         }
-        
+
         return newEmployee;
     }
 }
