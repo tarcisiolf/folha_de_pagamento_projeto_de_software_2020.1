@@ -96,7 +96,7 @@ public class Paycheck {
         else if(employeeType == "Hourly"){
             hoursIn = timecard.getTimeIn();
             hoursOut = timecard.getTimeOut();
-            hours = timecard.numberHours(hoursIn, hoursOut);
+            hours = timecard.numberWorkedHours(hoursIn, hoursOut);
 
             if(hours > 8){
                 extraTime = (hours - 8);
