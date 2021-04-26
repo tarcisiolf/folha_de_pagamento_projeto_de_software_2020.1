@@ -1,27 +1,27 @@
 package union;
 
 public class Taxes {
-    private String type;
-    private double value;
+    private double monthlyTaxe;
+    private double additionalTaxe;
 
-    public Taxes(String type, double value) {
-        this.type = type;
-        this.value = value;
+    public Taxes(double monthlyTaxe, double additionalTaxe) {
+        this.monthlyTaxe = monthlyTaxe;
+        this.additionalTaxe = additionalTaxe;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setMonthlyTaxe(double monthlyTaxe) {
+        this.monthlyTaxe = monthlyTaxe;
     }
 
-    public String getType() {
-        return type;
+    public double getMonthlyTaxe() {
+        return monthlyTaxe;
     }
 
-    public void setValue(double value) {
-        this.value = value;
+    public void setAdditionalTaxe(double additionalTaxe) {
+        this.additionalTaxe = additionalTaxe;
     }
 
-    public double getValue() {
-        return value;
+    public double getAdditionalTaxe() {
+        return additionalTaxe;
     }
 }
