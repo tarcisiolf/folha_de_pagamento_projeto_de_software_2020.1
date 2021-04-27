@@ -1,6 +1,7 @@
 package app;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.Random;
 import employees.Comissioned;
 import employees.Employee;
@@ -49,6 +50,7 @@ public class EmployessFunction {
 
                 employeeID = random.nextInt(100);
                 newEmployee.setEmployeeID(employeeID);
+
                 break;
 
             case 2:
@@ -59,6 +61,7 @@ public class EmployessFunction {
 
                 employeeID = random.nextInt(100);
                 newEmployee.setEmployeeID(employeeID);
+
                 break;
 
             case 3:
@@ -72,6 +75,7 @@ public class EmployessFunction {
 
                 employeeID = random.nextInt(100);
                 newEmployee.setEmployeeID(employeeID);
+
                 break;
         
             default:
@@ -99,5 +103,16 @@ public class EmployessFunction {
         }
 
         return newEmployee;
+    }
+
+    static void infoEmployee(ArrayList <Employee> employeesList){
+
+        int i = 0;
+        for (Employee employee: employeesList){  
+            System.out.println("Empregado ");
+            System.out.println(i);
+            System.out.println(employee.printEmployeeInfo(employee));
+            i++;
+        }
     }
 }

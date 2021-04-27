@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import employees.Employee;
 import employees.Salaried;
-
+import app.EmployessFunction;
 
 public class Main {
 
@@ -19,6 +19,7 @@ public class Main {
             System.out.println("\n ---- Menu do Sistema da Folha de Pagamento ---- \n");
             System.out.println("Por favor, escolha uma opção: ");
             System.out.println("1 - Adicionar um novo empregado");
+            System.out.println("2 - Informações dos empregados");
             System.out.println("0 - Fechar o menu.\n");
             System.out.print("  -> ");
 
@@ -30,27 +31,14 @@ public class Main {
                 case 1:
                     Employee newEmployee = EmployessFunction.addEmployee();
                     employeesList.add(newEmployee);
-                    System.out.println("\n");
-                    System.out.print(newEmployee.getName());
-                    System.out.println("\n");
-                    System.out.print(newEmployee.getAddress());
-                    System.out.println("\n");
-                    System.out.print(newEmployee.getFiliated());
-                    System.out.println("\n");
-                    System.out.print(newEmployee.getEmployeeID());
-                    System.out.println("\n");
-                    System.out.print(((Salaried) newEmployee).getBaseSalary());
-                    System.out.println("\n");
-                    System.out.print(newEmployee);
-                    System.out.println("\n");
-                    System.out.print(employeesList);
-                    System.out.println("\n");
                     break;
-            
+                
+                case 2:
+                    EmployessFunction.infoEmployee(employeesList);
+                    break;
                 default:
                     break;
-            }
+            }            
         }
-
     }
 }
