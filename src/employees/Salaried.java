@@ -2,19 +2,19 @@ package employees;
 
 public class Salaried extends Employee{
 
-    private double wage;
+    private double baseSalary;
 
     public Salaried(String name, String address, boolean filiated,
-    double wage) {
+    double baseSalary) {
         super(name, address, filiated);
-        this.wage = wage;
+        this.baseSalary = baseSalary;
     }
 
-    public void setWage(double wage) {
-        this.wage = wage;
+    public void setBaseSalary(double baseSalary) {
+        this.baseSalary = baseSalary;
     }
 
-    public double getWage() {
-        return wage;
+    public double getBaseSalary() {
+        return baseSalary;
     }
 }

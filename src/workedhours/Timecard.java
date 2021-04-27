@@ -42,7 +42,7 @@ public class Timecard {
         return numberHours;
     }
     
-    public double numberHours(String checkInTime, String exitTime) {
+    public double numberWorkedHours(String checkInTime, String exitTime) {
         String[] parts1 = checkInTime.split(":");
         String[] parts2 = checkInTime.split(":");
 

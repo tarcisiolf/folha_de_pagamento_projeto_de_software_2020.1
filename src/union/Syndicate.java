@@ -1,7 +1,7 @@
 package union;
 
 public class Syndicate {
-   private int syndicateID = -1;
+   private int syndicateID;
    private Taxes taxe;
 
    public Syndicate(int syndicateID){

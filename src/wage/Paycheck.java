@@ -6,7 +6,7 @@ public class Paycheck {
     private String employeeType;
     private double baseSalary;
     private double comission;
-    private Timecard workedHours;
+    private Timecard timecard;
     private String paymentDate;
     private double sales;
     private double normalTaxe;
@@ -40,12 +40,12 @@ public class Paycheck {
         return comission;
     }
 
-    public void setHorkedHours(Timecard workedHours) {
-        this.workedHours = workedHours;
+    public void setTimecard(Timecard timecard) {
+        this.timecard = timecard;
     }
 
-    public Timecard getWorkedHours() {
-        return workedHours;
+    public Timecard getTimecard() {
+        return timecard;
     }
 
     public void setPaymentDate(String paymentDate) {
@@ -73,7 +73,7 @@ public class Paycheck {
     }
 
     public double calcSalary(String employeeType, double baseSalary, 
-    double comission, double sales, Timecard workedHours, double normalTaxe){
+    double comission, double sales, Timecard timecard, double normalTaxe){
 
         double salary = 0.0;
         double halfSalary = 0.0;
@@ -94,9 +94,9 @@ public class Paycheck {
         }
 
         else if(employeeType == "Hourly"){
-            hoursIn = workedHours.getTimeIn();
-            hoursOut = workedHours.getTimeOut();
-            hours = workedHours.numberHours(hoursIn, hoursOut);
+            hoursIn = timecard.getTimeIn();
+            hoursOut = timecard.getTimeOut();
+            hours = timecard.numberHours(hoursIn, hoursOut);
 
             if(hours > 8){
                 extraTime = (hours - 8);

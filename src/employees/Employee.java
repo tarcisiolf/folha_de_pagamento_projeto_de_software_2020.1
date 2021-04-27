@@ -1,5 +1,4 @@
 package employees;
-
 import union.Syndicate;
 import wage.Paycheck;
 

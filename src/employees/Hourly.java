@@ -1,5 +1,4 @@
 package employees;
-
 import workedhours.Timecard;
 
 public class Hourly extends Employee{
