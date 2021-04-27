@@ -74,4 +74,10 @@ public class Employee {
 		return this.syndicate;
 	}
 
+    public String printEmployeeInfo(Employee employee){ 
+        return  "Name: " + employee.name + 
+                "\nAddress: " + employee.address + 
+                "\nEmployeeID: " + employee.employeeID +
+                "\nFiliated: " + employee.filiated;
+    }
 }
