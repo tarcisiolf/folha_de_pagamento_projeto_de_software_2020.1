@@ -2,10 +2,10 @@ package payment;
 
 public class PaymentMethod {
     private String type;
-    private String employeeID;
+    private int employeeID;
     private String name;
 
-    public PaymentMethod(String type, String employeeID, String name) {
+    public PaymentMethod(String type, int employeeID, String name) {
         this.type = type;
         this.employeeID = employeeID;
         this.name = name;
@@ -19,11 +19,11 @@ public class PaymentMethod {
         return type;
     }
 
-    public void setEmployeeID(String employeeID) {
+    public void setEmployeeID(int employeeID) {
         this.employeeID = employeeID;
     }
 
-    public String getEmployeeID() {
+    public int getEmployeeID() {
         return employeeID;
     }
 
