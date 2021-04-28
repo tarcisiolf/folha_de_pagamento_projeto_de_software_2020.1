@@ -15,7 +15,6 @@ public class SalesResult {
     public static void addSale(ArrayList <Employee> employeesList) {
         Scanner input = new Scanner(System.in);
         String name = new String();
-        String date = new String();
         double saleValue = 0.0f;
         int indexOfEmployee = -1;
 
