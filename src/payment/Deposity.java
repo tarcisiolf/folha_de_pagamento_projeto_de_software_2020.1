@@ -9,7 +9,7 @@ public class Deposity extends PaymentMethod{
     private int bankNumber;
 
 
-    public Deposity(String type, String employeeID, String name, double value, 
+    public Deposity(String type, int employeeID, String name, double value, 
     String accountType, String agency, String accountNumber, int bankNumber) {
         super(type, employeeID, name);
         this.value = value;

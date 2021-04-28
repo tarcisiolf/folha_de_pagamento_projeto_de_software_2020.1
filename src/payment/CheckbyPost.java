@@ -6,7 +6,7 @@ public class CheckbyPost extends PaymentMethod{
     private String employeeAddress;
 
 
-    public CheckbyPost(String type, String employeeID, double value,
+    public CheckbyPost(String type, int employeeID, double value,
     String employeeAddress, String name) {
         super(type, employeeID, name);
         this.value = value;
