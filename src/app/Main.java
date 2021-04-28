@@ -3,7 +3,7 @@ package app;
 import java.util.Scanner;
 import java.util.ArrayList;
 import employees.Employee;
-import app.EmployessFunction;
+import employees.Comissioned;
 
 public class Main {
 
@@ -41,6 +41,9 @@ public class Main {
                 case 3:
                     EmployessFunction.removeEmployee(employeesList);
                     break;
+                
+                case 5:
+                    SalesResult.addSale(employeesList);
                     
                 default:
                     break;
