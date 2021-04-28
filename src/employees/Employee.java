@@ -16,6 +16,7 @@ public class Employee {
     private boolean filiated;
     private Paycheck salary;
     private Syndicate syndicate;
+    private int employeeSyndicateID = -1;
 
     public Employee(String name, String address, boolean filiated)
     {
@@ -82,4 +83,13 @@ public class Employee {
                 "\nEmployeeID: " + employee.employeeID +
                 "\nFiliated: " + employee.filiated;
     }
+
+    public void setEmployeeSyndicateID(int employeeSyndicateID) {
+        this.employeeSyndicateID = employeeSyndicateID;
+    }
+  
+    public int getEmployeeSyndicateID(){
+        return employeeSyndicateID;
+    }
+  
 }
