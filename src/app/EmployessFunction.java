@@ -72,6 +72,7 @@ public class EmployessFunction {
                 double comission = input.nextDouble();
 
                 newEmployee = new Comissioned(name, address, filiated, baseSalary, comission);
+                ((Comissioned) newEmployee).setSales(null);
 
                 employeeID = random.nextInt(100);
                 newEmployee.setEmployeeID(employeeID);
@@ -122,16 +123,16 @@ public class EmployessFunction {
         int indexOfEmployee = -1;
         
         int i = 0;
-        
+
         for(Employee employee: employeesList){
             
             name = employee.getName();
             
             // Strings criadas de formas diferentes, método intern para resolver o problema de comparação
-            System.out.println(name);
-            System.out.println(name.length());
-            System.out.println(employeeName);
-            System.out.println(employeeName.length());
+            //System.out.println(name);
+            //System.out.println(name.length());
+            //System.out.println(employeeName);
+            //System.out.println(employeeName.length());
 
             if(employeeName.intern() == name.intern()){     
                 indexOfEmployee = i;
