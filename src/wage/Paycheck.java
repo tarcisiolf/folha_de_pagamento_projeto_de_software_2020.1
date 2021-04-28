@@ -10,10 +10,12 @@ public class Paycheck {
     private String paymentDate;
     private double sales;
     private double normalTaxe;
+    private String paymentAgenda;
 
-    public Paycheck(String employeeType, double baseSalary) {
+    public Paycheck(String employeeType, double baseSalary, String paymentAgenda) {
         this.employeeType = employeeType;
         this.baseSalary = baseSalary;
+        this.paymentAgenda = paymentAgenda;
     }
 
     public void setEmployeeType(String employeeType) {
@@ -105,5 +107,13 @@ public class Paycheck {
         }
 
         return salary;
+    }
+
+    public void setPaymentAgenda(String paymentAgenda) {
+        this.paymentAgenda = paymentAgenda;
+    }
+
+    public String getPaymentAgenda() {
+        return paymentAgenda;
     }
 }

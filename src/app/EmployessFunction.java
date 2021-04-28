@@ -91,7 +91,7 @@ public class EmployessFunction {
                 employeeID = random.nextInt(100);
                 newEmployee.setEmployeeID(employeeID);
 
-                newPaycheck = new Paycheck("Comissioned", baseSalary, "2-Week");
+                newPaycheck = new Paycheck("Comissioned", baseSalary, "Two-Weekly");
                 newPaycheck.setComission(comission);
                 newEmployee.setSalary(newPaycheck);
                 break;
@@ -440,10 +440,10 @@ public class EmployessFunction {
                         int employeeID = employee.getEmployeeID();
                         newComissioned.setEmployeeID(employeeID);
 
-                        Paycheck newPaycheck = new Paycheck("Comissioned", baseSalary, "2-Week");
+                        Paycheck newPaycheck = new Paycheck("Comissioned", baseSalary, "Two-Weekly");
                         newPaycheck.setComission(comission);
                         newComissioned.setSalary(newPaycheck);
-                        
+
                         employeesList.set(indexOfEmployee, newComissioned);
 
                         // Employee testEmployee = employeesList.get(indexOfEmployee);
