@@ -13,12 +13,13 @@ import payment.Deposity;
 import payment.PaymentMethod;
 import union.Syndicate;
 import union.Taxes;
+import wage.Paycheck;
 import workedhours.Timecard;
 
 
 public class EmployessFunction {
 
-    static Employee addEmployee() {
+    public static Employee addEmployee() {
 
         Random random = new Random();
         Employee newEmployee = null;
@@ -42,13 +43,13 @@ public class EmployessFunction {
         System.out.println("O novo empregado é sindicalizado? Digite 'true' para sim ou 'false' para não");
  		filiated = input.nextBoolean();
 
-        System.out.println("Digite o tipo do empregado dentre as seguintes opções:\n '1 - Horista', ' 2 - Assalariado', '3 - Comissionado'");
+        System.out.println("Digite o nº da opção do tipo do empregado dentre as seguintes opções:\n '1 - Horista', ' 2 - Assalariado', '3 - Comissionado'");
         type = input.nextInt();
         
         switch (type) {
 
             case 1:
-                System.out.println("Digite o salário hora desse empregado");
+                System.out.println("Digite o salário hora desse empregado no formato '0,0'");
                 double normalTaxe = input.nextDouble();
 
                 newEmployee = new Hourly(name, address, filiated, normalTaxe);
@@ -57,10 +58,14 @@ public class EmployessFunction {
                 employeeID = random.nextInt(100);
                 newEmployee.setEmployeeID(employeeID);
 
+                Paycheck newPaycheck = new Paycheck("Hourly", 0.0f, "Weekly");
+                newPaycheck.setNormalTaxe(normalTaxe);
+                newEmployee.setSalary(newPaycheck);
+
                 break;
 
             case 2:
-                System.out.println("Digite o salário base desse empregado");
+                System.out.println("Digite o salário base desse empregado no formato '0,0'");
                 double baseSalary = input.nextDouble();
 
                 newEmployee = new Salaried(name, address, filiated, baseSalary);
@@ -68,13 +73,16 @@ public class EmployessFunction {
                 employeeID = random.nextInt(100);
                 newEmployee.setEmployeeID(employeeID);
 
+                newPaycheck = new Paycheck("Salaried", baseSalary, "Monthly");
+                newEmployee.setSalary(newPaycheck);
+                
                 break;
 
             case 3:
-                System.out.println("Digite o salário base desse empregado");
+                System.out.println("Digite o salário base desse empregado no formato '0,0'");
                 baseSalary = input.nextDouble();
 
-                System.out.println("Digite a comissão desse empregado");
+                System.out.println("Digite a comissão desse empregado no formato '0,0'");
                 double comission = input.nextDouble();
 
                 newEmployee = new Comissioned(name, address, filiated, baseSalary, comission);
@@ -83,6 +91,9 @@ public class EmployessFunction {
                 employeeID = random.nextInt(100);
                 newEmployee.setEmployeeID(employeeID);
 
+                newPaycheck = new Paycheck("Comissioned", baseSalary, "2-Week");
+                newPaycheck.setComission(comission);
+                newEmployee.setSalary(newPaycheck);
                 break;
         
             default:
@@ -91,9 +102,9 @@ public class EmployessFunction {
 
         if(filiated){
             int syndicateID = -1;
-            System.out.println("Digite o valor da taxa mensal (taxa sindical):");
+            System.out.println("Digite o valor da taxa mensal (taxa sindical) no formato '0,0':");
             double monthlyTaxe = input.nextDouble();
-            System.out.println("Digite o valor da taxa adicional:");
+            System.out.println("Digite o valor da taxa adicional no formato '0,0':");
             double additionalTaxe = input.nextDouble();
             input.nextLine();
             
@@ -110,7 +121,7 @@ public class EmployessFunction {
             newEmployee.setSyndicate(null);
         }
 
-        System.out.println("Digite o Nº da opção do método de pagamento desejado dentre as seguintes opções:\n '1 - Cheque Correios', ' 2 - Cheque em Mãos', '3 - Depósito'");
+        System.out.println("Digite o nº da opção do método de pagamento desejado dentre as seguintes opções:\n '1 - Cheque Correios', ' 2 - Cheque em Mãos', '3 - Depósito'");
         paymentMethod = input.nextInt();
         double value = 0.0f;
 
@@ -153,6 +164,8 @@ public class EmployessFunction {
 
             default:
                 break;
+
+            
         }
         
         //Teste
@@ -208,10 +221,11 @@ public class EmployessFunction {
         //     System.out.println("Nº Banco "+ testeDeposity.getBankNumber());
         //     System.out.println("passei8");
         // }
+
         return newEmployee;
     }
 
-    static void infoEmployee(ArrayList <Employee> employeesList){
+    public static void infoEmployee(ArrayList <Employee> employeesList){
 
         int i = 0;
         for (Employee employee: employeesList){  
@@ -325,13 +339,13 @@ public class EmployessFunction {
 
                 case 3:
                     int type = -1;
-                    System.out.println("Digite a opção de empregado:\n '1 - Horista', ' 2 - Assalariado', '3 - Comissionado'");
+                    System.out.println("Digite o nº da opção de empregado:\n '1 - Horista', ' 2 - Assalariado', '3 - Comissionado'");
                     type = input.nextInt();
 
                     employee = employeesList.get(indexOfEmployee);
 
                     if (type == 1) {
-                        System.out.println("Digite o salário hora desse empregado");
+                        System.out.println("Digite o salário hora desse empregado no formato '0,0'");
                         double normalTaxe = input.nextDouble();
 
                         Employee newHoruly = new Hourly(employee.getName(), employee.getAddress(), employee.getFiliated(), normalTaxe);
@@ -346,6 +360,11 @@ public class EmployessFunction {
 
                         int employeeID = employee.getEmployeeID();
                         newHoruly.setEmployeeID(employeeID);
+
+                        Paycheck newPaycheck = new Paycheck("Hourly", 0.0f, "Weekly");
+                        newPaycheck.setNormalTaxe(normalTaxe);
+                        newHoruly.setSalary(newPaycheck);
+
                         employeesList.set(indexOfEmployee, newHoruly);
 
                         // Employee testEmployee = employeesList.get(indexOfEmployee);
@@ -364,7 +383,7 @@ public class EmployessFunction {
                     }
 
                     else if(type == 2){
-                        System.out.println("Digite o salário base desse empregado");
+                        System.out.println("Digite o salário base desse empregado no formato '0,0'");
                         double baseSalary = input.nextDouble();
 
                         Employee newSalaried = new Salaried(employee.getName(), employee.getAddress(), employee.getFiliated(), baseSalary);
@@ -379,6 +398,10 @@ public class EmployessFunction {
 
                         int employeeID = employee.getEmployeeID();
                         newSalaried.setEmployeeID(employeeID);
+
+                        Paycheck newPaycheck = new Paycheck("Salaried", baseSalary, "Monthly");
+                        newSalaried.setSalary(newPaycheck);
+
                         employeesList.set(indexOfEmployee, newSalaried);
 
                         // Employee testEmployee = employeesList.get(indexOfEmployee);
@@ -397,10 +420,10 @@ public class EmployessFunction {
                     }
 
                     else if(type == 3){
-                        System.out.println("Digite o salário base desse empregado");
+                        System.out.println("Digite o salário base desse empregado no formato '0,0'");
                         double baseSalary = input.nextDouble();
         
-                        System.out.println("Digite a comissão desse empregado");
+                        System.out.println("Digite a comissão desse empregado no formato '0,0'");
                         double comission = input.nextDouble();
 
                         Employee newComissioned = new Comissioned(employee.getName(), employee.getAddress(), employee.getFiliated(), baseSalary, comission);
@@ -416,6 +439,11 @@ public class EmployessFunction {
 
                         int employeeID = employee.getEmployeeID();
                         newComissioned.setEmployeeID(employeeID);
+
+                        Paycheck newPaycheck = new Paycheck("Comissioned", baseSalary, "2-Week");
+                        newPaycheck.setComission(comission);
+                        newComissioned.setSalary(newPaycheck);
+                        
                         employeesList.set(indexOfEmployee, newComissioned);
 
                         // Employee testEmployee = employeesList.get(indexOfEmployee);
@@ -527,9 +555,9 @@ public class EmployessFunction {
                         Random random = new Random();
                         int syndicateID = -1;
                         
-                        System.out.println("Digite o valor da taxa mensal (taxa sindical):");
+                        System.out.println("Digite o valor da taxa mensal (taxa sindical) no formato '0,0':");
                         double monthlyTaxe = input.nextDouble();
-                        System.out.println("Digite o valor da taxa adicional:");
+                        System.out.println("Digite o valor da taxa adicional no formato '0,0':");
                         double additionalTaxe = input.nextDouble();
                         input.nextLine();
                         
@@ -557,7 +585,7 @@ public class EmployessFunction {
                     break;
                 
                 case 7:
-                    System.out.println("Digite o valor da taxa mensal (taxa sindical):");
+                    System.out.println("Digite o valor da taxa mensal (taxa sindical) no formato '0,0':");
                     double monthlyTaxe = input.nextDouble();
 
                     employee = employeesList.get(indexOfEmployee);
