@@ -4,13 +4,11 @@ public class PaymentMethod {
     private String type;
     private String employeeID;
     private String name;
-    private String date;
 
-    public PaymentMethod(String type, String employeeID, String name, String date) {
+    public PaymentMethod(String type, String employeeID, String name) {
         this.type = type;
         this.employeeID = employeeID;
         this.name = name;
-        this.date = date;
     }
 
     public void setType(String type) {
@@ -35,13 +33,5 @@ public class PaymentMethod {
 
     public String getName() {
         return name;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getDate() {
-        return date;
     }
 }

@@ -4,8 +4,8 @@ public class CheckinHands extends PaymentMethod{
 
     private double value;
 
-    public CheckinHands(String type, String employeeID, String name, String date, double value) {
-        super(type, employeeID, name, date);
+    public CheckinHands(String type, String employeeID, String name, double value) {
+        super(type, employeeID, name);
         this.value = value;
     }
     public void setValue(double value) {
