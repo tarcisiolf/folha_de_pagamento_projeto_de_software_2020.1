@@ -81,7 +81,8 @@ public class Employee {
         return  "Name: " + employee.name + 
                 "\nAddress: " + employee.address + 
                 "\nEmployeeID: " + employee.employeeID +
-                "\nFiliated: " + employee.filiated;
+                "\nFiliated: " + employee.filiated +
+                "\nSyndicateID: "+ employee.employeeSyndicateID;
     }
 
     public void setEmployeeSyndicateID(int employeeSyndicateID) {
