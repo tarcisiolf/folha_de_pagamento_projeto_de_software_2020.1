@@ -94,6 +94,7 @@ public class EmployessFunction {
                 newPaycheck = new Paycheck("Comissioned", baseSalary, "Two-Weekly");
                 newPaycheck.setComission(comission);
                 newEmployee.setSalary(newPaycheck);
+                
                 break;
         
             default:
