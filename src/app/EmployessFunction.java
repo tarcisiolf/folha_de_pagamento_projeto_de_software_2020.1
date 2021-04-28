@@ -36,10 +36,10 @@ public class EmployessFunction {
         System.out.println("Digite o nome do novo empregado:");
         name = input.nextLine();
 
-        System.out.println("Digite o endereco do novo empregado:");
+        System.out.println("Digite o endereço do novo empregado:");
         address = input.nextLine();
 
-        System.out.println("O novo empregado he sindicalizado? Digite 'true' para sim ou 'false' para nao");
+        System.out.println("O novo empregado é sindicalizado? Digite 'true' para sim ou 'false' para não");
  		filiated = input.nextBoolean();
 
         System.out.println("Digite o tipo do empregado dentre as seguintes opções:\n '1 - Horista', ' 2 - Assalariado', '3 - Comissionado'");
@@ -48,7 +48,7 @@ public class EmployessFunction {
         switch (type) {
 
             case 1:
-                System.out.println("Digite o salario hora desse empregado");
+                System.out.println("Digite o salário hora desse empregado");
                 double normalTaxe = input.nextDouble();
 
                 newEmployee = new Hourly(name, address, filiated, normalTaxe);
@@ -60,7 +60,7 @@ public class EmployessFunction {
                 break;
 
             case 2:
-                System.out.println("Digite o salario base desse empregado");
+                System.out.println("Digite o salário base desse empregado");
                 double baseSalary = input.nextDouble();
 
                 newEmployee = new Salaried(name, address, filiated, baseSalary);
@@ -71,10 +71,10 @@ public class EmployessFunction {
                 break;
 
             case 3:
-                System.out.println("Digite o salario base desse empregado");
+                System.out.println("Digite o salário base desse empregado");
                 baseSalary = input.nextDouble();
 
-                System.out.println("Digite a comissao desse empregado");
+                System.out.println("Digite a comissão desse empregado");
                 double comission = input.nextDouble();
 
                 newEmployee = new Comissioned(name, address, filiated, baseSalary, comission);
@@ -91,7 +91,7 @@ public class EmployessFunction {
 
         if(filiated){
             int syndicateID = -1;
-            System.out.println("Digite o valor da taxa mensal:");
+            System.out.println("Digite o valor da taxa mensal (taxa sindical):");
             double monthlyTaxe = input.nextDouble();
             System.out.println("Digite o valor da taxa adicional:");
             double additionalTaxe = input.nextDouble();
@@ -297,7 +297,7 @@ public class EmployessFunction {
             System.out.println("Digite o nome do empregado onde os dados serão editados:");
             employeeName = input.nextLine();
 
-            System.out.println("Digite o nº da opção do dado que será editado dentre a seguinte opções:\n1-Nome, 2-Endereço, 3-Tipo, 4-Método de Pagamento, 5-Sindicato, 6-Identificação no Sindicato e 7-Método de Pagamento");            
+            System.out.println("Digite o nº da opção do dado que será editado dentre a seguinte opções:\n1-Nome, 2-Endereço, 3-Tipo, 4-Método de Pagamento, 5-Sindicato, 6-Identificação no Sindicato e 7-Taxa Sindical");            
             edit = input.nextInt();
             // Data vai receber o caracter " " enter 
             data = input.nextLine();
@@ -331,7 +331,7 @@ public class EmployessFunction {
                     employee = employeesList.get(indexOfEmployee);
 
                     if (type == 1) {
-                        System.out.println("Digite o salario hora desse empregado");
+                        System.out.println("Digite o salário hora desse empregado");
                         double normalTaxe = input.nextDouble();
 
                         Employee newHoruly = new Hourly(employee.getName(), employee.getAddress(), employee.getFiliated(), normalTaxe);
@@ -364,7 +364,7 @@ public class EmployessFunction {
                     }
 
                     else if(type == 2){
-                        System.out.println("Digite o salario base desse empregado");
+                        System.out.println("Digite o salário base desse empregado");
                         double baseSalary = input.nextDouble();
 
                         Employee newSalaried = new Salaried(employee.getName(), employee.getAddress(), employee.getFiliated(), baseSalary);
@@ -397,10 +397,10 @@ public class EmployessFunction {
                     }
 
                     else if(type == 3){
-                        System.out.println("Digite o salario base desse empregado");
+                        System.out.println("Digite o salário base desse empregado");
                         double baseSalary = input.nextDouble();
         
-                        System.out.println("Digite a comissao desse empregado");
+                        System.out.println("Digite a comissão desse empregado");
                         double comission = input.nextDouble();
 
                         Employee newComissioned = new Comissioned(employee.getName(), employee.getAddress(), employee.getFiliated(), baseSalary, comission);
@@ -437,39 +437,132 @@ public class EmployessFunction {
                     break;
 
                 case 4:
-                    System.out.println("Digite o método de pagamento desejado dentre as opções:\n '1 - Cheuque Correios', ' 2 - Cheque em Mãos', '3 - Depósito'");
+                    PaymentMethod newPaymentMethod = null;
+                    double value = 0.0f;
+
+                    System.out.println("Digite o método de pagamento desejado dentre as opções:\n '1 - Cheque Correios', ' 2 - Cheque em Mãos', '3 - Depósito'");
                     edit = input.nextInt();
                     // Data vai receber o caracter " " enter 
                     data = input.nextLine();
 
+                    indexOfEmployee = getIndexList(employeesList, employeeName);
+
                     switch (edit) {
                         case 1:
+                            employee = employeesList.get(indexOfEmployee);
 
+                            newPaymentMethod = new PaymentMethod("CheckbyPost", employee.getEmployeeID(), employee.getName());
+                            CheckbyPost newCheckbyPost = new CheckbyPost(newPaymentMethod.getType(), newPaymentMethod.getEmployeeID(), value, employee.getAddress(), employee.getName());
+                            employee.setPaymentMethod(newCheckbyPost);
+
+                            employeesList.set(indexOfEmployee, employee);
                             break;
 
                         case 2:
+                            employee = employeesList.get(indexOfEmployee);
 
+                            newPaymentMethod = new PaymentMethod("CheckinHands", employee.getEmployeeID(), employee.getName());
+                            CheckinHands newCheckinHands = new CheckinHands(newPaymentMethod.getType(), newPaymentMethod.getEmployeeID(), employee.getName(), value);
+                            employee.setPaymentMethod(newCheckinHands);
+
+                            employeesList.set(indexOfEmployee, employee);
                             break;
 
                         case 3:
 
+                            employee = employeesList.get(indexOfEmployee);
+
+                            newPaymentMethod = new PaymentMethod("Deposity", employee.getEmployeeID(), employee.getName());
+                            System.out.println("Digite o tipo da conta dentre as opções:\n 'Conta', 'Poupança'");
+                            String accountType = new String();
+                            accountType = input.nextLine();
+
+                            System.out.println("Digite o número da agência:");
+                            String agency = new String();
+                            agency = input.nextLine();
+
+                            System.out.println("Digite o número da conta:");
+                            String acconuntNumber = new String();
+                            acconuntNumber = input.nextLine();
+
+                            System.out.println("Digite o número do banco:");
+                            int bankNumber = -1;
+                            bankNumber = input.nextInt();
+
+                            Deposity newDeposity = new Deposity(newPaymentMethod.getType(), newPaymentMethod.getEmployeeID(), employee.getName(), value, accountType, agency, acconuntNumber, bankNumber);
+                            employee.setPaymentMethod(newDeposity);
+
+                            employeesList.set(indexOfEmployee, employee);
                             break;
 
                         default:
                             break;
                     }
+
                     break;
 
                 case 5:
+                    System.out.println("O empregado é sindicalizado: Digite '1' para sim e '0' para não");
+                    edit = input.nextInt();
+                    System.out.println("Se o empregado for sindicalizado ele será removido do sindicato");
+                    System.out.println("Se o empregado não for sindicalizado ele será adicionado ao sindicato");
+
+                    indexOfEmployee = getIndexList(employeesList, employeeName);
+                    int employeeSyndicateID = -1;
+
+                    if (edit == 1) {
+                        employee = employeesList.get(indexOfEmployee);
+
+                        Syndicate newSyndicate = null;
+
+                        employee.setEmployeeSyndicateID(employeeSyndicateID);
+                        employee.setSyndicate(newSyndicate);
+                        employee.setFiliated(false);
+                        employeesList.set(indexOfEmployee, employee);
+                    }
+
+                    else if (edit == 0){
+                        employee = employeesList.get(indexOfEmployee);
+                        
+                        Random random = new Random();
+                        int syndicateID = -1;
+                        
+                        System.out.println("Digite o valor da taxa mensal (taxa sindical):");
+                        double monthlyTaxe = input.nextDouble();
+                        System.out.println("Digite o valor da taxa adicional:");
+                        double additionalTaxe = input.nextDouble();
+                        input.nextLine();
+                        
+                        Syndicate newSyndicate = new Syndicate(syndicateID);
+                        Taxes newTaxe = new Taxes(monthlyTaxe, additionalTaxe);
+                        employeeSyndicateID = random.nextInt(100);
+
+                        newSyndicate.setTaxes(newTaxe);
+                        employee.setSyndicate(newSyndicate);
+                        employee.setEmployeeSyndicateID(employeeSyndicateID);
+                        employee.setFiliated(true);
+
+                        employeesList.set(indexOfEmployee, employee);
+                    }
 
                     break;
 
                 case 6:
+                    System.out.println("Digite o ID do empregado no Sindicato:");
+                    employeeSyndicateID = input.nextInt();
 
+                    employee = employeesList.get(indexOfEmployee);
+                    employee.setEmployeeSyndicateID(employeeSyndicateID);
+                    employeesList.set(indexOfEmployee, employee);
                     break;
                 
                 case 7:
+                    System.out.println("Digite o valor da taxa mensal (taxa sindical):");
+                    double monthlyTaxe = input.nextDouble();
 
+                    employee = employeesList.get(indexOfEmployee);
+                    employee.getSyndicate().getTaxes().setMonthlyTaxe(monthlyTaxe);
+                    employeesList.set(indexOfEmployee, employee);
                     break;
 
                 default:

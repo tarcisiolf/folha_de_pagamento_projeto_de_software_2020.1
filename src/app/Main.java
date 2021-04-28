@@ -23,6 +23,7 @@ public class Main {
             System.out.println("4 - Lançar um cartão de ponto");
             System.out.println("5 - Lançar um resultado de venda");
             System.out.println("6 - Lançar uma taxa de serviço");
+            System.out.println("7 - Editar dados de um funcionário");
             System.out.println("0 - Fechar o menu.\n");
             System.out.print("  -> ");
 
@@ -55,7 +56,11 @@ public class Main {
                 case 6:
                     TaxesLaunch.setServiceTaxe(employeesList);
                     break;
-
+                
+                case 7:
+                    EmployessFunction.editEmployee(employeesList);
+                    break;
+                        
                 default:
                     break;
             }            
