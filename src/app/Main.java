@@ -20,6 +20,7 @@ public class Main {
             System.out.println("Por favor, escolha uma opção: ");
             System.out.println("1 - Adicionar um novo empregado");
             System.out.println("2 - Informações dos empregados");
+            System.out.println("3 - Remover um empregado");
             System.out.println("0 - Fechar o menu.\n");
             System.out.print("  -> ");
 
@@ -36,6 +37,11 @@ public class Main {
                 case 2:
                     EmployessFunction.infoEmployee(employeesList);
                     break;
+
+                case 3:
+                    EmployessFunction.removeEmployee(employeesList);
+                    break;
+                    
                 default:
                     break;
             }            

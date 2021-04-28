@@ -115,4 +115,47 @@ public class EmployessFunction {
             i++;
         }
     }
+
+    public static void removeEmployee(ArrayList<Employee> employeesList){
+
+        Scanner input = new Scanner(System.in);
+        String employeeName = new String();
+        
+        if(employeesList.isEmpty()){
+            System.out.println("Lista de empregados vazia \n");
+        }
+
+        else{
+
+            String name = new String();
+            int i = 0;
+            int indexOfEmployee = -1;
+            System.out.println("Digite o nome do empregado a ser removido:");
+            employeeName = input.nextLine();
+            
+            for(Employee employee: employeesList){
+                name = employee.getName();
+                
+                // Strings criadas de formas diferentes, método intern para resolver o problema de comparação
+                if(employeeName.intern() == name.intern()){       
+                    
+                    indexOfEmployee = i;
+                    break;
+                }
+
+                i++;   
+            }
+
+            if (indexOfEmployee == -1) {
+                System.out.println("Empregado não encontrado \n");
+            }
+
+            else{
+                employeesList.remove(indexOfEmployee);
+                System.out.println("Empregado removido! \n");
+            }
+
+            return;    
+        }
+    }
 }
