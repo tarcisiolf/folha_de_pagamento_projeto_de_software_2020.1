@@ -44,9 +44,7 @@ public class EmployessFunction {
                 double normalTaxe = input.nextDouble();
 
                 newEmployee = new Hourly(name, address, filiated, normalTaxe);
-                
-                Timecard newTimecard = new Timecard();
-                ((Hourly) newEmployee).setTimecard(newTimecard);
+                ((Hourly) newEmployee).setTimecard(null);
 
                 employeeID = random.nextInt(100);
                 newEmployee.setEmployeeID(employeeID);
