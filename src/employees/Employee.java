@@ -1,6 +1,7 @@
 package employees;
 import java.util.ArrayList;
 
+import payment.PaymentMethod;
 import union.Syndicate;
 import wage.Paycheck;
 
@@ -17,6 +18,7 @@ public class Employee {
     private Paycheck salary;
     private Syndicate syndicate;
     private int employeeSyndicateID = -1;
+    private PaymentMethod paymentMethod;
 
     public Employee(String name, String address, boolean filiated)
     {
@@ -91,6 +93,14 @@ public class Employee {
   
     public int getEmployeeSyndicateID(){
         return employeeSyndicateID;
+    }
+
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public PaymentMethod getPaymentMethod(){
+        return this.paymentMethod;
     }
   
 }
