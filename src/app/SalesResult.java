@@ -6,9 +6,6 @@ import java.util.Scanner;
 import employees.Comissioned;
 import employees.Employee;
 import employees.Sales;
-import app.EmployessFunction;
-
-
 
 public class SalesResult {
 
