@@ -1,4 +1,6 @@
 package employees;
+import java.util.ArrayList;
+
 import union.Syndicate;
 import wage.Paycheck;
 
