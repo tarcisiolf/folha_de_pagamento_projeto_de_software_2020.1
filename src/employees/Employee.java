@@ -84,7 +84,8 @@ public class Employee {
                 "\nAddress: " + employee.address + 
                 "\nEmployeeID: " + employee.employeeID +
                 "\nFiliated: " + employee.filiated +
-                "\nSyndicateID: "+ employee.employeeSyndicateID;
+                "\nEmployeeSyndicateID: "+ employee.employeeSyndicateID +
+                "\nPaymentMethod: " +employee.getPaymentMethod().getType();
     }
 
     public void setEmployeeSyndicateID(int employeeSyndicateID) {
