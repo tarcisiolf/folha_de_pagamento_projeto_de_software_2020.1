@@ -1,14 +1,11 @@
 package employees;
 
 public class Sales {
+    
+    private double value = 0.0f;
 
-    private double value;
-    private String date;
-
-
-    public Sales(double value, String date) {
+    public Sales(double value) {
         this.value = value;
-        this.date = date;
     }
 
     public void setValue(double value) {
@@ -19,13 +16,7 @@ public class Sales {
         return value;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void addSale(double saleValue){
+        this.value = value + saleValue;
     }
-
-    public String getDate() {
-        return date;
-    }
-
-
 }
