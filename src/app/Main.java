@@ -3,7 +3,6 @@ package app;
 import java.util.Scanner;
 import java.util.ArrayList;
 import employees.Employee;
-import employees.Salaried;
 import app.EmployessFunction;
 
 public class Main {
@@ -21,6 +20,7 @@ public class Main {
             System.out.println("1 - Adicionar um novo empregado");
             System.out.println("2 - Informações dos empregados");
             System.out.println("3 - Remover um empregado");
+            System.out.println("5 - Lançar um resultado de venda");
             System.out.println("0 - Fechar o menu.\n");
             System.out.print("  -> ");
 

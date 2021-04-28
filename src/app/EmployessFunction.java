@@ -116,35 +116,51 @@ public class EmployessFunction {
         }
     }
 
-    public static void removeEmployee(ArrayList<Employee> employeesList){
-
-        Scanner input = new Scanner(System.in);
-        String employeeName = new String();
+    public static int getIndexList(ArrayList<Employee> employeesList, String employeeName){
         
+        String name = new String();
+        int indexOfEmployee = -1;
+        
+        int i = 0;
+        
+        for(Employee employee: employeesList){
+            
+            name = employee.getName();
+            
+            // Strings criadas de formas diferentes, método intern para resolver o problema de comparação
+            System.out.println(name);
+            System.out.println(name.length());
+            System.out.println(employeeName);
+            System.out.println(employeeName.length());
+
+            if(employeeName.intern() == name.intern()){     
+                indexOfEmployee = i;
+                break;
+            }
+
+            i++;   
+        }
+
+        return indexOfEmployee;
+    }
+
+    public static void removeEmployee(ArrayList<Employee> employeesList){
+ 
         if(employeesList.isEmpty()){
             System.out.println("Lista de empregados vazia \n");
         }
 
         else{
 
-            String name = new String();
-            int i = 0;
+            Scanner input = new Scanner(System.in);
             int indexOfEmployee = -1;
+            String employeeName = new String();
+
             System.out.println("Digite o nome do empregado a ser removido:");
             employeeName = input.nextLine();
             
-            for(Employee employee: employeesList){
-                name = employee.getName();
-                
-                // Strings criadas de formas diferentes, método intern para resolver o problema de comparação
-                if(employeeName.intern() == name.intern()){       
-                    
-                    indexOfEmployee = i;
-                    break;
-                }
-
-                i++;   
-            }
+            System.out.println("Empregado a ser removido: "+employeeName);
+            indexOfEmployee = getIndexList(employeesList, employeeName);
 
             if (indexOfEmployee == -1) {
                 System.out.println("Empregado não encontrado \n");
