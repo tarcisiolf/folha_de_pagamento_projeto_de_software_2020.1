@@ -97,7 +97,7 @@ public class Employee {
                 "\nEmployeeSyndicateID: "+ employee.employeeSyndicateID +
                 "\nPaymentMethod: " +employee.getPaymentMethod().getType()+
                 "\nNormalTaxe: "+hourlyEmployee.getNormalTaxe()+
-                "\nNumberHours "+hourlyEmployee.getTimecard().getNumberHours();
+                "\nNumberHours: "+hourlyEmployee.getTimecard().getNumberHours();
 
 
     }
@@ -121,9 +121,9 @@ public class Employee {
                 "\nFiliated: " + employee.filiated +
                 "\nEmployeeSyndicateID: "+ employee.employeeSyndicateID +
                 "\nPaymentMethod: " +employee.getPaymentMethod().getType()+
-                "\nBaseSalary"+comissionedEmployee.getBaseSalary()+
-                "\nComission"+comissionedEmployee.getComission()+
-                "\nSales"+comissionedEmployee.getSales().getValue();
+                "\nBaseSalary: "+comissionedEmployee.getBaseSalary()+
+                "\nComission: "+comissionedEmployee.getComission()+
+                "\nSales: "+comissionedEmployee.getSales().getValue();
     }
 
     public void setEmployeeSyndicateID(int employeeSyndicateID) {

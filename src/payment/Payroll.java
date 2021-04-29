@@ -52,7 +52,7 @@ public class Payroll {
         System.out.println("Digite a data de hoje no formato dd/MM/yyyy");
         date = input.nextLine();
 
-        System.out.println("Data "+ date);
+        //System.out.println("Data "+ date);
         String paymentAgenda = new String();
         //Paycheck newPaycheck = null;
         
@@ -65,26 +65,26 @@ public class Payroll {
             weekMonth = -1;
             lastDayMonth = -1;
 
-            
             paymentAgenda = employee.getSalary().getPaymentAgenda();
-            System.out.println("Agenda de pagamento "+ paymentAgenda);
+            //System.out.println("Agenda de pagamento "+ paymentAgenda);
             dayWeekString = Day.getWeekDayString(date);
-            System.out.println("Dia da semana "+ dayWeekString);
+            //System.out.println("Dia da semana "+ dayWeekString);
             weekMonth = Day.WeekMonth(date);
-            System.out.println("Nº da semana do mês "+ weekMonth);
+            //System.out.println("Nº da semana do mês "+ weekMonth);
             lastDayMonth = Day.LastDayMonth(date);
-            System.out.println("Último dia do mês "+ lastDayMonth);
-            System.out.println("\n");
+            //System.out.println("Último dia do mês "+ lastDayMonth);
+            //System.out.println("\n");
 
+            System.out.println("\n");
             if (paymentAgenda.intern() == "Weekly".intern() && dayWeekString.intern() == "SEX".intern()) {
-                System.out.println("Pagamento Horista");
+                System.out.println("Pagamento Horista\n");
                 System.out.println(employee.printHourlyInfo(employee));
 
                 double normalTaxe = employee.getSalary().getNormalTaxe();
                 
                 salary = employee.getSalary().calcSalary(employee, "Hourly", 0.0f, 0.0f, 0.0f, ((Hourly)employee).getTimecard(), normalTaxe, employee.getFiliated());
 
-                System.out.println(employee.getName() + " foi pago:");
+                System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
                 System.out.println("O valor do pagamento é de R$" + salary);
 
                 ((Hourly)employee).getTimecard().setNumberHours(0.0f);
@@ -93,14 +93,14 @@ public class Payroll {
             }
 
             else if(paymentAgenda.intern() == "Monthly".intern() && dayDate == lastDayMonth){
-                System.out.println("Pagamento Salariado");
+                System.out.println("Pagamento Salariado\n");
                 System.out.println(employee.printSalariedInfo(employee));
 
                 double baseSalary = employee.getSalary().getBaseSalary();
 
                 salary = employee.getSalary().calcSalary(employee, "Salaried", ((Salaried)employee).getBaseSalary(), 0.0f, 0.0f, null, 0.0f, employee.getFiliated());
 
-                System.out.println(employee.getName() + " foi pago:\n");
+                System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
                 System.out.println("O valor do pagamento é de R$" + salary);
 
                 employee.getSalary().setPaymentDate(date);
@@ -108,7 +108,7 @@ public class Payroll {
             }
 
             else if(paymentAgenda.intern() == "Two-Weekly".intern() && (weekMonth == 2 || weekMonth == 4) && (dayWeekString.intern() == "SEX".intern())){
-                System.out.println("Pagamento Vendedor");
+                System.out.println("Pagamento Vendedor\n");
                 System.out.println(employee.printComissionedInfo(employee));
 
                 double baseSalary = ((Comissioned)employee).getBaseSalary();
@@ -117,7 +117,7 @@ public class Payroll {
 
                 salary = employee.getSalary().calcSalary(employee ,"Comissioned", baseSalary, comission, sales, null, 0.0f, employee.getFiliated());
 
-                System.out.println(employee.getName() + " foi pago:\n");
+                System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
                 System.out.println("O valor do pagamento é de R$" + salary);
 
                 ((Comissioned)employee).getSales().setValue(0.0f);
