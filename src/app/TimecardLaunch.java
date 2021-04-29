@@ -74,13 +74,14 @@ public class TimecardLaunch {
             newTimecard.setTimeIn(timeIn);
             newTimecard.setTimeOut(timeOut);
             workedHoursNumber = newTimecard.numberWorkedHours(timeIn, timeOut);
+            System.out.println("Horas Trabalhadas "+workedHoursNumber);
             newTimecard.addWorkedHours(workedHoursNumber);
             hourlyEmployee.setTimecard(newTimecard);
         }
         
         employeesList.set(indexOfEmployee, hourlyEmployee);
 
-        Employee testEmployee = employeesList.get(indexOfEmployee);
+        //Employee testEmployee = employeesList.get(indexOfEmployee);
         // System.out.println("Nome " + testEmployee.getName());
         // System.out.println("Endereço " + testEmployee.getAddress());
         // System.out.println("passei 1");
