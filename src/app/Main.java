@@ -3,6 +3,7 @@ package app;
 import java.util.Scanner;
 import java.util.ArrayList;
 import employees.Employee;
+import payment.Payroll;
 import employees.Comissioned;
 
 public class Main {
@@ -25,6 +26,9 @@ public class Main {
             System.out.println("6 - Lançar uma taxa de serviço");
             System.out.println("7 - Editar dados de um funcionário");
             System.out.println("8 - Rodar a folha de pagamento");
+            System.out.println("12 - Informações do empregado Horista");
+            System.out.println("13 - Informações do empregado Salariado");
+            System.out.println("14 - Informações do empregado Comissionado");
             System.out.println("0 - Fechar o menu.\n");
             System.out.print("  -> ");
 
@@ -39,7 +43,7 @@ public class Main {
                     break;
                 
                 case 2:
-                    EmployessFunction.infoEmployee(employeesList);
+                    EmployessFunction.infoEmployees(employeesList);
                     break;
 
                 case 3:
@@ -63,7 +67,19 @@ public class Main {
                     break;
 
                 case 8:
-                    
+                    Payroll.PaymentList(employeesList);
+                    break;
+
+                case 12:
+                    EmployessFunction.infoHourly(employeesList);
+                    break;
+
+                case 13:
+                    EmployessFunction.infoSalaried(employeesList);
+                    break;
+
+                case 14:
+                    EmployessFunction.infoComissioned(employeesList);
                     break;
                         
                 default:
