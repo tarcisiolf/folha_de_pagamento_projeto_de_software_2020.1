@@ -111,6 +111,7 @@ public class Paycheck {
         else if(employeeType.intern() == "Salaried".intern()){
             
             if (filiated) {
+                //System.out.println("Filiado");
                 monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
                 additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
 
@@ -118,17 +119,19 @@ public class Paycheck {
             }
 
             else{
+                //System.out.println("Não Filiado");
                 salary = baseSalary;
             }
         }
 
         else if(employeeType.intern() == "Hourly".intern()){
             hours = timecard.getNumberHours();
+            System.out.println("Horas trabalhadas "+hours);
             int hoursWeek = 40;
 
             //Hora extra
             if(hours > hoursWeek){
-
+                System.out.println("Horas extra");
                 if (filiated) {
                     monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
                     additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
@@ -137,18 +140,18 @@ public class Paycheck {
                     double oneQuarterAdditionalTaxe = additionalTaxe/4; 
 
                     extraTime = (hours - hoursWeek);
-                    salary = (hoursWeek*normalTaxe)+(extraTime*1.5*normalTaxe)-(oneQuarterMonthlyTaxe+oneQuarterAdditionalTaxe);
+                    salary = (hours*normalTaxe)+(extraTime*1.5*normalTaxe)-(oneQuarterMonthlyTaxe+oneQuarterAdditionalTaxe);
                 }
 
                 else{
                     extraTime = (hours - hoursWeek);
-                    salary = (hoursWeek*normalTaxe)+(extraTime*1.5*normalTaxe);
+                    salary = (hours*normalTaxe)+(extraTime*1.5*normalTaxe);
                 }  
             }
 
             //Sem hora extra
             else{
-                
+                System.out.println("Sem hora extra");
                 if (filiated) {
                     monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
                     additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
@@ -156,11 +159,11 @@ public class Paycheck {
                     double oneQuarterMonthlyTaxe = monthlyTaxe/4;
                     double oneQuarterAdditionalTaxe = additionalTaxe/4; 
 
-                    salary = (hoursWeek*normalTaxe)-(oneQuarterMonthlyTaxe+oneQuarterAdditionalTaxe);
+                    salary = (hours*normalTaxe)-(oneQuarterMonthlyTaxe+oneQuarterAdditionalTaxe);
                 }
 
                 else{
-                    salary = (hoursWeek*normalTaxe);
+                    salary = (hours*normalTaxe);
                 }  
             }
         }
