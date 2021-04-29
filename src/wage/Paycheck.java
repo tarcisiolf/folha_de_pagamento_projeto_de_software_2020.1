@@ -1,5 +1,6 @@
 package wage;
 
+import employees.Employee;
 import workedhours.Timecard;
 
 public class Paycheck {
@@ -74,35 +75,93 @@ public class Paycheck {
         return normalTaxe;
     }
 
-    public double calcSalary(String employeeType, double baseSalary, 
-    double comission, double sales, Timecard timecard, double normalTaxe){
+    public double calcSalary(Employee employee, String employeeType, double baseSalary, 
+    double comission, double sales, Timecard timecard, double normalTaxe, boolean filiated){
 
-        double salary = 0.0;
-        double halfSalary = 0.0;
-        double salesSalary = 0.0;
-        String hoursIn;
-        String hoursOut;
-        double hours = 0.0;
-        double extraTime = 0.0;
-        
-        if(employeeType == "Comissioned"){
-            halfSalary = baseSalary/2;
-            salesSalary = (comission * sales);
-            salary = (halfSalary + salesSalary);
+        double salary = 0.0f;
+        double halfSalary = 0.0f;
+        double salesSalary = 0.0f;
+        double hours = 0.0f;
+        double extraTime = 0.0f;
+        double monthlyTaxe = 0.0f;
+        double additionalTaxe = 0.0f;
+
+        if(employeeType.intern() == "Comissioned".intern()){
+
+            if(filiated){
+                monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
+                additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
+
+                double halfMonthlyTaxe = monthlyTaxe/2;
+                double halfAdditionalTaxe = additionalTaxe/2;
+
+                halfSalary = baseSalary/2;
+                salesSalary = (comission * sales);
+                salary = (halfSalary + salesSalary) - (halfMonthlyTaxe + halfAdditionalTaxe);
+            }
+
+            else{
+                halfSalary = baseSalary/2;
+                salesSalary = (comission * sales);
+                salary = (halfSalary + salesSalary);
+            }
+
         }
 
-        else if(employeeType == "Salaried"){
-            salary = baseSalary;
+        else if(employeeType.intern() == "Salaried".intern()){
+            
+            if (filiated) {
+                monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
+                additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
+
+                salary = (baseSalary - monthlyTaxe - additionalTaxe);
+            }
+
+            else{
+                salary = baseSalary;
+            }
         }
 
-        else if(employeeType == "Hourly"){
-            hoursIn = timecard.getTimeIn();
-            hoursOut = timecard.getTimeOut();
-            hours = timecard.numberWorkedHours(hoursIn, hoursOut);
+        else if(employeeType.intern() == "Hourly".intern()){
+            hours = timecard.getNumberHours();
+            int hoursWeek = 40;
 
-            if(hours > 8){
-                extraTime = (hours - 8);
-                salary = (8*normalTaxe)+(extraTime*1.5*normalTaxe);
+            //Hora extra
+            if(hours > hoursWeek){
+
+                if (filiated) {
+                    monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
+                    additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
+    
+                    double oneQuarterMonthlyTaxe = monthlyTaxe/4;
+                    double oneQuarterAdditionalTaxe = additionalTaxe/4; 
+
+                    extraTime = (hours - hoursWeek);
+                    salary = (hoursWeek*normalTaxe)+(extraTime*1.5*normalTaxe)-(oneQuarterMonthlyTaxe+oneQuarterAdditionalTaxe);
+                }
+
+                else{
+                    extraTime = (hours - hoursWeek);
+                    salary = (hoursWeek*normalTaxe)+(extraTime*1.5*normalTaxe);
+                }  
+            }
+
+            //Sem hora extra
+            else{
+                
+                if (filiated) {
+                    monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
+                    additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
+    
+                    double oneQuarterMonthlyTaxe = monthlyTaxe/4;
+                    double oneQuarterAdditionalTaxe = additionalTaxe/4; 
+
+                    salary = (hoursWeek*normalTaxe)-(oneQuarterMonthlyTaxe+oneQuarterAdditionalTaxe);
+                }
+
+                else{
+                    salary = (hoursWeek*normalTaxe);
+                }  
             }
         }
 
