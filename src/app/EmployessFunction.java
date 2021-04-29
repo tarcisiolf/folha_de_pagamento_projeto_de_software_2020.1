@@ -226,7 +226,7 @@ public class EmployessFunction {
         return newEmployee;
     }
 
-    public static void infoEmployee(ArrayList <Employee> employeesList){
+    public static void infoEmployees(ArrayList <Employee> employeesList){
 
         int i = 0;
         for (Employee employee: employeesList){  
@@ -234,6 +234,52 @@ public class EmployessFunction {
             System.out.println(employee.printEmployeeInfo(employee));
             i++;
         }
+    }
+
+    public static void infoHourly(ArrayList <Employee> employeesList){
+
+        Scanner input = new Scanner(System.in);
+        String name = new String();
+        int indexOfEmployee = -1;
+
+        System.out.println("Digite o nome do empregado:");
+        name = input.nextLine();
+
+        indexOfEmployee = getIndexList(employeesList, name);
+        Employee employee = employeesList.get(indexOfEmployee);
+
+        System.out.println(employee.printHourlyInfo(employee));
+    }
+
+    public static void infoSalaried(ArrayList <Employee> employeesList){
+
+        Scanner input = new Scanner(System.in);
+        String name = new String();
+        int indexOfEmployee = -1;
+
+        System.out.println("Digite o nome do empregado:");
+        name = input.nextLine();
+
+        indexOfEmployee = getIndexList(employeesList, name);
+        Employee employee = employeesList.get(indexOfEmployee);
+
+        System.out.println(employee.printSalariedInfo(employee));
+    }
+
+
+    public static void infoComissioned(ArrayList <Employee> employeesList){
+
+        Scanner input = new Scanner(System.in);
+        String name = new String();
+        int indexOfEmployee = -1;
+
+        System.out.println("Digite o nome do empregado:");
+        name = input.nextLine();
+
+        indexOfEmployee = getIndexList(employeesList, name);
+        Employee employee = employeesList.get(indexOfEmployee);
+
+        System.out.println(employee.printComissionedInfo(employee));
     }
 
     public static int getIndexList(ArrayList<Employee> employeesList, String employeeName){
