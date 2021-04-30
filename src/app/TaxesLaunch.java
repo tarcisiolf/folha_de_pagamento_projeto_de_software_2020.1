@@ -25,17 +25,9 @@ public class TaxesLaunch {
 
         Employee employee = employeesList.get(indexOfEmployee);
 
-        // System.out.println("Nome " + employee.getName());
-        // System.out.println("Endereço " + employee.getAddress());
-
         Syndicate newSyndicate = employee.getSyndicate();
 
-        // System.out.println("Syndicate ID " + newSyndicate.getSyndicateID());
-
         Taxes newTaxe = newSyndicate.getTaxes();
-
-        // System.out.println("Taxa Adicional " + newTaxe.getAdditionalTaxe());
-        // System.out.println("Taxa Mensal " + newTaxe.getMonthlyTaxe());
 
         newTaxe.setAdditionalTaxe(serviceTaxeValue);
 
@@ -43,17 +35,5 @@ public class TaxesLaunch {
         employee.setSyndicate(newSyndicate);
 
         employeesList.set(indexOfEmployee, employee);
-
-        // Employee testEmployee = employeesList.get(indexOfEmployee);
-        // System.out.println("Nome " + testEmployee.getName());
-        // System.out.println("Endereço " + testEmployee.getAddress());
-        // System.out.println("passei 1");
-        // System.out.println("Syndicate ID " + testEmployee.getSyndicate().getSyndicateID());
-        // System.out.println("passei 2");
-        // double aux = testEmployee.getSyndicate().getTaxes().getAdditionalTaxe();
-        // System.out.println("Taxa Adicional "+ aux);
-        // System.out.println("passei 3");
-        // double aux2 = testEmployee.getSyndicate().getTaxes().getMonthlyTaxe();
-        // System.out.println("Taxa Mensal "+ aux2);
     }
 }

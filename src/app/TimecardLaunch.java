@@ -35,31 +35,16 @@ public class TimecardLaunch {
 
         Employee employee = employeesList.get(indexOfEmployee);
 
-        //System.out.println("Nome " + employee.getName());
-        //System.out.println("Endereço " + employee.getAddress());
-
         Hourly hourlyEmployee = ((Hourly) employee);
-        //System.out.println("Taxa Normal " + ((Hourly) employee).getNormalTaxe());
 
         if(hourlyEmployee.getTimecard() == null){
 
             Timecard newTimecard = new Timecard(0.0f);
             timecardNumber = random.nextInt(100);
             newTimecard.setTimecardNumber(timecardNumber);
-
-            //System.out.println("N Horas "+newTimecard.getNumberHours());
-            //System.out.println("Passei 1");
-    
-            //System.out.println("Time IN "+timeIn);
-            //System.out.println("Time Out "+timeOut);
     
             newTimecard.setTimeIn(timeIn);
             newTimecard.setTimeOut(timeOut);
-
-            //System.out.println("Passei 2");
-    
-            //System.out.println("Time In "+timeIn);
-            //System.out.println("Time Out "+timeOut);
 
             workedHoursNumber = newTimecard.numberWorkedHours(timeIn, timeOut);
             System.out.println("Horas Trabalhadas "+workedHoursNumber);
@@ -80,12 +65,5 @@ public class TimecardLaunch {
         }
         
         employeesList.set(indexOfEmployee, hourlyEmployee);
-
-        //Employee testEmployee = employeesList.get(indexOfEmployee);
-        // System.out.println("Nome " + testEmployee.getName());
-        // System.out.println("Endereço " + testEmployee.getAddress());
-        // System.out.println("passei 1");
-        // System.out.println("Horas trabalhadas " + ((Hourly) testEmployee).getTimecard().getNumberHours());
-        // System.out.println("passei 2");
     }
 }

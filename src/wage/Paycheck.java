@@ -116,7 +116,6 @@ public class Paycheck {
         else if(employeeType.intern() == "Salaried".intern() && employee.getSalary().getPaymentAgenda().intern() == "Monthly".intern()){
             
             if (filiated) {
-                //System.out.println("Filiado");
                 monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
                 additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
 
@@ -124,7 +123,6 @@ public class Paycheck {
             }
 
             else{
-                //System.out.println("Não Filiado");
                 salary = baseSalary;
             }
         }
@@ -213,7 +211,6 @@ public class Paycheck {
         else if (employeeType.intern() == "Salaried".intern() && employee.getSalary().getPaymentAgenda().intern() == "Weekly".intern()) {
             
             if (filiated) {
-                //System.out.println("Filiado");
                 monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
                 additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
 
@@ -226,7 +223,6 @@ public class Paycheck {
             }
 
             else{
-                //System.out.println("Não Filiado");
                 oneQuarterSalary = baseSalary/4;
                 salary = oneQuarterSalary;
             }
@@ -235,7 +231,6 @@ public class Paycheck {
         else if (employeeType.intern() == "Salaried".intern() && employee.getSalary().getPaymentAgenda().intern() == "Two-Weekly".intern()) {
             
             if (filiated) {
-                //System.out.println("Filiado");
                 monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
                 additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
 
@@ -248,7 +243,6 @@ public class Paycheck {
             }
 
             else{
-                //System.out.println("Não Filiado");
                 halfSalary = baseSalary/2;
                 salary = halfSalary;
             }

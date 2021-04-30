@@ -86,19 +86,15 @@ public class Day{
         String[] dateSplit = date.split("/");
 
         int month = Integer.parseInt(dateSplit[1]);
-        //System.out.println("Mês " + month);
-
+        
         //Ao colocar o mês corrente era retornado o mês posterior. Por isso o -1
         c.set(Calendar.MONTH, month-1);
         c.set(Calendar.DAY_OF_MONTH, c.getActualMaximum(Calendar.DAY_OF_MONTH));
 
         lastDate = new SimpleDateFormat("dd/MM/yyyy").format(c.getTime());
-        //System.out.println("Last Date " + lastDate);
-
         String[] lastDateSplit = lastDate.split("/");
 
         int lastDay = Integer.parseInt(lastDateSplit[0]);
-        //System.out.println("Last Day " + lastDay);
 
         return lastDay;
     }

@@ -14,7 +14,6 @@ public class SalesResult {
         String name = new String();
         double saleValue = 0.0f;
         int indexOfEmployee = -1;
-        //Comissioned comissionedEmployee = null;
 
         System.out.println("Digite o nome do empregado que realizou a venda:");
         name = input.nextLine();
@@ -25,15 +24,6 @@ public class SalesResult {
         indexOfEmployee = EmployessFunction.getIndexList(employeesList, name);
 
         Employee employee = employeesList.get(indexOfEmployee);
-
-        //System.out.println("Nome " + employee.getName());
-        //System.out.println("Endereço " + employee.getAddress());
-
-        //Comissioned comissionedEmployee = new Comissioned(employee.getName(), employee.getAddress(), 
-        //employee.getFiliated(), ((Comissioned) employee).getBaseSalary(), ((Comissioned) employee).getComission());
-
-        //System.out.println("Salário " + ((Comissioned) employee).getBaseSalary());
-        //System.out.println("Comissão " + ((Comissioned) employee).getComission());
 
         Comissioned comissionedEmployee = ((Comissioned) employee);
         if (comissionedEmployee.getSales() == null) {
@@ -49,16 +39,5 @@ public class SalesResult {
         
         employeesList.set(indexOfEmployee, comissionedEmployee);
 
-        // Employee testEmployee = employeesList.get(indexOfEmployee);
-        // System.out.println("Nome " + testEmployee.getName());
-        // System.out.println("Endereço " + testEmployee.getAddress());
-        // System.out.println("passei 1");
-        // System.out.println("Agenda Pagamento "+ testEmployee.getSalary().getPaymentAgenda());
-        // System.out.println("passei 2");
-        // System.out.println("Salário " + ((Comissioned) testEmployee).getBaseSalary());
-        // System.out.println("Comissão " + ((Comissioned) testEmployee).getComission());
-        // System.out.println("passei 3");
-        // System.out.println("Valor da venda "+((Comissioned) testEmployee).getSales().getValue());
-        // System.out.println("passei 4");
     }
 }

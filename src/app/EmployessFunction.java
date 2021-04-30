@@ -169,60 +169,6 @@ public class EmployessFunction {
             
         }
         
-        //Teste
-
-        // if (paymentMethod == 1) {
-        //     PaymentMethod testPaymentMethod = newEmployee.getPaymentMethod();
-        //     CheckbyPost testeCheckbyPost = ((CheckbyPost)testPaymentMethod);
-
-        //     System.out.println("Tipo "+ testeCheckbyPost.getType());
-        //     System.out.println("passei1");
-        //     System.out.println("E ID "+ testeCheckbyPost.getEmployeeID());
-        //     System.out.println("passei2");
-        //     System.out.println("Valor "+ testeCheckbyPost.getValue());
-        //     System.out.println("passei3");
-        //     System.out.println("Endereço "+ testeCheckbyPost.getEmployeeAddress());
-        //     System.out.println("passei4");
-        //     System.out.println("Nome "+ testeCheckbyPost.getName());
-        //     System.out.println("passei5");
-        // }
-
-        // else if(paymentMethod == 2){
-        //     PaymentMethod testPaymentMethod = newEmployee.getPaymentMethod();
-        //     CheckinHands testeCheckinHands = ((CheckinHands)testPaymentMethod);
-
-        //     System.out.println("Tipo "+ testeCheckinHands.getType());
-        //     System.out.println("passei1");
-        //     System.out.println("E ID "+ testeCheckinHands.getEmployeeID());
-        //     System.out.println("passei2");
-        //     System.out.println("Valor "+ testeCheckinHands.getValue());
-        //     System.out.println("passei3");
-        //     System.out.println("Nome "+ testeCheckinHands.getName());
-        //     System.out.println("passei4");
-        // }
-
-        // else if(paymentMethod == 3){
-        //     PaymentMethod testPaymentMethod = newEmployee.getPaymentMethod();
-        //     Deposity testeDeposity = ((Deposity)testPaymentMethod);
-
-        //     System.out.println("Tipo "+ testeDeposity.getType());
-        //     System.out.println("passei1");
-        //     System.out.println("E ID "+ testeDeposity.getEmployeeID());
-        //     System.out.println("passei2");
-        //     System.out.println("Valor "+ testeDeposity.getValue());
-        //     System.out.println("passei3");
-        //     System.out.println("Nome "+ testeDeposity.getName());
-        //     System.out.println("passei4");
-        //     System.out.println("Tipo de conta "+ testeDeposity.getAccountType());
-        //     System.out.println("passei5");
-        //     System.out.println("Nº de Conta "+ testeDeposity.getAccountNumber());
-        //     System.out.println("passei6");
-        //     System.out.println("Nº Agência "+ testeDeposity.getAgency());
-        //     System.out.println("passei7");
-        //     System.out.println("Nº Banco "+ testeDeposity.getBankNumber());
-        //     System.out.println("passei8");
-        // }
-
         return newEmployee;
     }
 
@@ -293,12 +239,6 @@ public class EmployessFunction {
             
             name = employee.getName();
             
-            // Strings criadas de formas diferentes, método intern para resolver o problema de comparação
-            //System.out.println(name);
-            //System.out.println(name.length());
-            //System.out.println(employeeName);
-            //System.out.println(employeeName.length());
-
             if(employeeName.intern() == name.intern()){     
                 indexOfEmployee = i;
                 break;
@@ -414,19 +354,6 @@ public class EmployessFunction {
 
                         employeesList.set(indexOfEmployee, newHoruly);
 
-                        // Employee testEmployee = employeesList.get(indexOfEmployee);
-                        // System.out.println("Nome " + testEmployee.getName());
-                        // System.out.println("Endereço " + testEmployee.getAddress());
-                        // System.out.println("passei 1");
-                        // System.out.println("Salario hora "+ ((Hourly)testEmployee).getNormalTaxe());
-                        // System.out.println("passei2");
-                        // // Sindicalizado
-                        // System.out.println("Nº sindicato " + testEmployee.getEmployeeSyndicateID());
-                        // System.out.println("passei3");
-                        // System.out.println("Taxa Adicional " + testEmployee.getSyndicate().getTaxes().getAdditionalTaxe());
-                        // System.out.println("passei4");
-                        // System.out.println("Taxa Mensal " + testEmployee.getSyndicate().getTaxes().getMonthlyTaxe());
-                        // System.out.println("passei5");
                     }
 
                     else if(type == 2){
@@ -451,19 +378,6 @@ public class EmployessFunction {
 
                         employeesList.set(indexOfEmployee, newSalaried);
 
-                        // Employee testEmployee = employeesList.get(indexOfEmployee);
-                        // System.out.println("Nome " + testEmployee.getName());
-                        // System.out.println("Endereço " + testEmployee.getAddress());
-                        // System.out.println("passei 1");
-                        // System.out.println("Salario Base "+ ((Salaried)testEmployee).getBaseSalary());
-                        // System.out.println("passei2");
-                        // // Sindicalizado
-                        // System.out.println("Nº sindicato " + testEmployee.getEmployeeSyndicateID());
-                        // System.out.println("passei3");
-                        // System.out.println("Taxa Adicional " + testEmployee.getSyndicate().getTaxes().getAdditionalTaxe());
-                        // System.out.println("passei4");
-                        // System.out.println("Taxa Mensal " + testEmployee.getSyndicate().getTaxes().getMonthlyTaxe());
-                        // System.out.println("passei5");
                     }
 
                     else if(type == 3){
@@ -493,21 +407,6 @@ public class EmployessFunction {
 
                         employeesList.set(indexOfEmployee, newComissioned);
 
-                        // Employee testEmployee = employeesList.get(indexOfEmployee);
-                        // System.out.println("Nome " + testEmployee.getName());
-                        // System.out.println("Endereço " + testEmployee.getAddress());
-                        // System.out.println("passei 1");
-                        // System.out.println("Salario Base "+ ((Comissioned)testEmployee).getBaseSalary());
-                        // System.out.println("passei2");
-                        // System.out.println("Comissão "+ ((Comissioned)testEmployee).getComission());
-                        // System.out.println("passei2");
-                        // // Sindicalizado
-                        // System.out.println("Nº sindicato " + testEmployee.getEmployeeSyndicateID());
-                        // System.out.println("passei3");
-                        // System.out.println("Taxa Adicional " + testEmployee.getSyndicate().getTaxes().getAdditionalTaxe());
-                        // System.out.println("passei4");
-                        // System.out.println("Taxa Mensal " + testEmployee.getSyndicate().getTaxes().getMonthlyTaxe());
-                        // System.out.println("passei5");
                     }
                     break;
 
