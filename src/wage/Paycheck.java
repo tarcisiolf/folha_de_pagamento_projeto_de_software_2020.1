@@ -143,12 +143,12 @@ public class Paycheck {
                     oneQuarterAdditionalTaxe = additionalTaxe/4; 
 
                     extraTime = (hours - hoursWeek);
-                    salary = (hours*normalTaxe)+(extraTime*1.5*normalTaxe)-(oneQuarterMonthlyTaxe+oneQuarterAdditionalTaxe);
+                    salary = ((hours-extraTime)*normalTaxe)+(extraTime*1.5*normalTaxe)-(oneQuarterMonthlyTaxe+oneQuarterAdditionalTaxe);
                 }
 
                 else{
                     extraTime = (hours - hoursWeek);
-                    salary = (hours*normalTaxe)+(extraTime*1.5*normalTaxe);
+                    salary = ((hours-extraTime)*normalTaxe)+(extraTime*1.5*normalTaxe);
                 }  
             }
 
@@ -264,12 +264,12 @@ public class Paycheck {
                     halfAdditionalTaxe = additionalTaxe/2; 
 
                     extraTime = (hours - hoursWeek);
-                    salary = (hours*normalTaxe)+(extraTime*1.5*normalTaxe)-(halfMonthlyTaxe+halfAdditionalTaxe);
+                    salary = ((hours-extraTime)*normalTaxe)+(extraTime*1.5*normalTaxe)-(halfMonthlyTaxe+halfAdditionalTaxe);
                 }
 
                 else{
                     extraTime = (hours - hoursWeek);
-                    salary = (hours*normalTaxe)+(extraTime*1.5*normalTaxe);
+                    salary = ((hours-extraTime)*normalTaxe)+(extraTime*1.5*normalTaxe);
                 }  
             }
 
@@ -305,12 +305,12 @@ public class Paycheck {
                     additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
 
                     extraTime = (hours - hoursWeek);
-                    salary = (hours*normalTaxe)+(extraTime*1.5*normalTaxe)-(monthlyTaxe + additionalTaxe);
+                    salary = ((hours-extraTime)*normalTaxe)+(extraTime*1.5*normalTaxe)-(monthlyTaxe + additionalTaxe);
                 }
 
                 else{
                     extraTime = (hours - hoursWeek);
-                    salary = (hours*normalTaxe)+(extraTime*1.5*normalTaxe);
+                    salary = ((hours-extraTime)*normalTaxe)+(extraTime*1.5*normalTaxe);
                 }  
             }
 
