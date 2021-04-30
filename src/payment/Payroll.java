@@ -1,6 +1,9 @@
 package payment;
 
 import java.util.Scanner;
+
+import app.EmployessFunction;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -14,30 +17,6 @@ import date.Day;
 
 public class Payroll {
     
-    // private ArrayList<Employee> employessList;
-    // private String date;
-
-    // public Payroll(ArrayList<Employee> employessList, String date){
-    //     this.employessList = employessList;
-    //     this.date = date;
-    // }
-
-    // public void setEmployeesList(ArrayList<Employee> employessList){
-    //     this.employessList = employessList;
-    // }
-
-    // public ArrayList<Employee> getEmployessList(){
-    //     return employessList;
-    // }
-
-    // public void setDate(String date) {
-    //     this.date = date;
-    // }
-
-    // public String getDate(){
-    //     return date;
-    // }
-
     public static void PaymentList(ArrayList<Employee> employeesList) {
         
         Scanner input = new Scanner(System.in);
@@ -124,5 +103,37 @@ public class Payroll {
                 employee.getSalary().setPaymentDate(date);
             }
         }
+    }
+
+    public void changeEmployeePaymentAgenda(ArrayList<Employee> employeesList) {
+
+        Scanner input = new Scanner(System.in);
+        String name = new String();
+        int paymentAgenda = -1;
+        int indexOfEmployee = -1;
+
+        System.out.println("Digite o nome do empregado onde será editada a agenda de pagamento");
+        name = input.nextLine();
+        System.out.println("Digite o nº da opção da nova agenda de pagamento do empregado dentre as seguintes opções:\n '1 - Semanalmente', '2 - Mensalmente', '3 - Bi-semanalmente'");
+        paymentAgenda = input.nextInt();
+
+        indexOfEmployee = EmployessFunction.getIndexList(employeesList, name);
+        Employee employee = employeesList.get(indexOfEmployee);
+
+        switch (paymentAgenda) {
+            case 1:
+                employee.getSalary().setPaymentAgenda("Weekly");
+                break;
+            case 2:
+                employee.getSalary().setPaymentAgenda("Monthly");
+                break;
+            case 3:
+                employee.getSalary().setPaymentAgenda("Two-Weekly");
+                break;
+            default:
+                break;
+        }
+
+        employeesList.set(indexOfEmployee, employee);
     }
 }

@@ -26,9 +26,10 @@ public class Main {
             System.out.println("6 - Lançar uma taxa de serviço");
             System.out.println("7 - Editar dados de um funcionário");
             System.out.println("8 - Rodar a folha de pagamento");
-            System.out.println("12 - Informações do empregado Horista");
-            System.out.println("13 - Informações do empregado Salariado");
-            System.out.println("14 - Informações do empregado Comissionado");
+            System.out.println("9 - Mudar a agenda do empregado");
+            System.out.println("10 - Informações do empregado Horista");
+            System.out.println("11 - Informações do empregado Salariado");
+            System.out.println("12 - Informações do empregado Comissionado");
             System.out.println("0 - Fechar o menu.\n");
             System.out.print("  -> ");
 
@@ -70,15 +71,19 @@ public class Main {
                     Payroll.PaymentList(employeesList);
                     break;
 
-                case 12:
+                case 9:
+                    Payroll.PaymentList(employeesList);
+                    break;
+
+                case 10:
                     EmployessFunction.infoHourly(employeesList);
                     break;
 
-                case 13:
+                case 11:
                     EmployessFunction.infoSalaried(employeesList);
                     break;
 
-                case 14:
+                case 12:
                     EmployessFunction.infoComissioned(employeesList);
                     break;
                         
