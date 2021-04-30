@@ -52,7 +52,7 @@ public class Payroll {
                 if (employee.getSalary().getEmployeeType().intern() == "Hourly".intern()) {
 
                     System.out.println("Pagamento Horista | Agenda: Semanalmente\n");
-                    System.out.println(employee.printHourlyInfo(employee));
+                    //System.out.println(employee.printHourlyInfo(employee));
     
                     double normalTaxe = employee.getSalary().getNormalTaxe();
                     
@@ -68,7 +68,7 @@ public class Payroll {
                 else if (employee.getSalary().getEmployeeType().intern() == "Salaried".intern()) {
                     
                     System.out.println("Pagamento Salariado | Agenda: Semanalmente\n");
-                    System.out.println(employee.printSalariedInfo(employee));
+                    //System.out.println(employee.printSalariedInfo(employee));
     
                     double baseSalary = employee.getSalary().getBaseSalary();
     
@@ -83,7 +83,7 @@ public class Payroll {
 
                 else if (employee.getSalary().getEmployeeType().intern() == "Comissioned".intern()) {
                     System.out.println("Pagamento Vendedor | Agenda: Semanalmente\n");
-                    System.out.println(employee.printComissionedInfo(employee));
+                    //System.out.println(employee.printComissionedInfo(employee));
 
                     double baseSalary = ((Comissioned)employee).getBaseSalary();
                     double comission = ((Comissioned)employee).getComission();
