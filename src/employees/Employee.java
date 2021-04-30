@@ -85,7 +85,8 @@ public class Employee {
                 "\nEmployeeID: " + employee.employeeID +
                 "\nFiliated: " + employee.filiated +
                 "\nEmployeeSyndicateID: "+ employee.employeeSyndicateID +
-                "\nPaymentMethod: " +employee.getPaymentMethod().getType();
+                "\nPaymentMethod: " +employee.getPaymentMethod().getType() +
+                "\nPaymentAgenda: "+ employee.getSalary().getPaymentAgenda();
     }
 
     public String printHourlyInfo(Employee employee){ 
