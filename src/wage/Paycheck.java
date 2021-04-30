@@ -80,20 +80,25 @@ public class Paycheck {
 
         double salary = 0.0f;
         double halfSalary = 0.0f;
+        double oneQuarterSalary = 0.0f;
         double salesSalary = 0.0f;
         double hours = 0.0f;
         double extraTime = 0.0f;
         double monthlyTaxe = 0.0f;
         double additionalTaxe = 0.0f;
+        double halfMonthlyTaxe = 0.0f;
+        double halfAdditionalTaxe = 0.0f;
+        double oneQuarterMonthlyTaxe = 0.0f;
+        double oneQuarterAdditionalTaxe = 0.0f;
 
-        if(employeeType.intern() == "Comissioned".intern()){
+        if(employeeType.intern() == "Comissioned".intern() && employee.getSalary().getPaymentAgenda().intern() == "Two-Weekly".intern()){
 
             if(filiated){
                 monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
                 additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
 
-                double halfMonthlyTaxe = monthlyTaxe/2;
-                double halfAdditionalTaxe = additionalTaxe/2;
+                halfMonthlyTaxe = monthlyTaxe/2;
+                halfAdditionalTaxe = additionalTaxe/2;
 
                 halfSalary = baseSalary/2;
                 salesSalary = (comission * sales);
@@ -108,7 +113,7 @@ public class Paycheck {
 
         }
 
-        else if(employeeType.intern() == "Salaried".intern()){
+        else if(employeeType.intern() == "Salaried".intern() && employee.getSalary().getPaymentAgenda().intern() == "Monthly".intern()){
             
             if (filiated) {
                 //System.out.println("Filiado");
@@ -124,7 +129,7 @@ public class Paycheck {
             }
         }
 
-        else if(employeeType.intern() == "Hourly".intern()){
+        else if(employeeType.intern() == "Hourly".intern() && employee.getSalary().getPaymentAgenda().intern() == "Weekly".intern()){
             hours = timecard.getNumberHours();
             System.out.println("Horas trabalhadas "+hours);
             int hoursWeek = 40;
@@ -136,8 +141,8 @@ public class Paycheck {
                     monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
                     additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
     
-                    double oneQuarterMonthlyTaxe = monthlyTaxe/4;
-                    double oneQuarterAdditionalTaxe = additionalTaxe/4; 
+                    oneQuarterMonthlyTaxe = monthlyTaxe/4;
+                    oneQuarterAdditionalTaxe = additionalTaxe/4; 
 
                     extraTime = (hours - hoursWeek);
                     salary = (hours*normalTaxe)+(extraTime*1.5*normalTaxe)-(oneQuarterMonthlyTaxe+oneQuarterAdditionalTaxe);
@@ -156,10 +161,173 @@ public class Paycheck {
                     monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
                     additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
     
-                    double oneQuarterMonthlyTaxe = monthlyTaxe/4;
-                    double oneQuarterAdditionalTaxe = additionalTaxe/4; 
+                    oneQuarterMonthlyTaxe = monthlyTaxe/4;
+                    oneQuarterAdditionalTaxe = additionalTaxe/4; 
 
                     salary = (hours*normalTaxe)-(oneQuarterMonthlyTaxe+oneQuarterAdditionalTaxe);
+                }
+
+                else{
+                    salary = (hours*normalTaxe);
+                }  
+            }
+        }
+
+        else if (employeeType.intern() == "Comissioned".intern() && employee.getSalary().getPaymentAgenda().intern() == "Weekly".intern()) {
+
+            if(filiated){
+                monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
+                additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
+
+                oneQuarterMonthlyTaxe = monthlyTaxe/4;
+                oneQuarterAdditionalTaxe = additionalTaxe/4;
+
+                oneQuarterSalary = baseSalary/4;
+                salesSalary = (comission * sales);
+                salary = (oneQuarterSalary + salesSalary) - (oneQuarterMonthlyTaxe + oneQuarterAdditionalTaxe);
+            }
+
+            else{
+                oneQuarterSalary = baseSalary/4;
+                salesSalary = (comission * sales);
+                salary = (oneQuarterSalary + salesSalary);
+            }  
+        }
+
+        else if (employeeType.intern() == "Comissioned".intern() && employee.getSalary().getPaymentAgenda().intern() == "Monthly".intern()) {
+            
+            if(filiated){
+                monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
+                additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
+
+                salesSalary = (comission * sales);
+                salary = (baseSalary + salesSalary) - (monthlyTaxe + additionalTaxe);
+            }
+
+            else{
+                salesSalary = (comission * sales);
+                salary = (baseSalary + salesSalary);
+            }  
+        }
+
+        else if (employeeType.intern() == "Salaried".intern() && employee.getSalary().getPaymentAgenda().intern() == "Weekly".intern()) {
+            
+            if (filiated) {
+                //System.out.println("Filiado");
+                monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
+                additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
+
+                oneQuarterMonthlyTaxe = monthlyTaxe/4;
+                oneQuarterAdditionalTaxe = additionalTaxe/4;
+
+                oneQuarterSalary = baseSalary/4;
+
+                salary = (oneQuarterSalary - oneQuarterMonthlyTaxe - oneQuarterAdditionalTaxe);
+            }
+
+            else{
+                //System.out.println("Não Filiado");
+                oneQuarterSalary = baseSalary/4;
+                salary = oneQuarterSalary;
+            }
+        }
+
+        else if (employeeType.intern() == "Salaried".intern() && employee.getSalary().getPaymentAgenda().intern() == "Two-Weekly".intern()) {
+            
+            if (filiated) {
+                //System.out.println("Filiado");
+                monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
+                additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
+
+                halfMonthlyTaxe = monthlyTaxe/2;
+                halfAdditionalTaxe = additionalTaxe/2;
+
+                halfSalary = baseSalary/2;
+
+                salary = (halfSalary - halfMonthlyTaxe - halfAdditionalTaxe);
+            }
+
+            else{
+                //System.out.println("Não Filiado");
+                halfSalary = baseSalary/2;
+                salary = halfSalary;
+            }
+        }
+
+        else if (employeeType.intern() == "Hourly".intern() && employee.getSalary().getPaymentAgenda().intern() == "Two-Weekly".intern()) {
+            hours = timecard.getNumberHours();
+            System.out.println("Horas trabalhadas "+hours);
+            int hoursWeek = 80;
+
+            //Hora extra
+            if(hours > hoursWeek){
+                System.out.println("Horas extra");
+                if (filiated) {
+                    monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
+                    additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
+    
+                    halfMonthlyTaxe = monthlyTaxe/2;
+                    halfAdditionalTaxe = additionalTaxe/2; 
+
+                    extraTime = (hours - hoursWeek);
+                    salary = (hours*normalTaxe)+(extraTime*1.5*normalTaxe)-(halfMonthlyTaxe+halfAdditionalTaxe);
+                }
+
+                else{
+                    extraTime = (hours - hoursWeek);
+                    salary = (hours*normalTaxe)+(extraTime*1.5*normalTaxe);
+                }  
+            }
+
+            //Sem hora extra
+            else{
+                System.out.println("Sem hora extra");
+                if (filiated) {
+                    monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
+                    additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
+    
+                    halfMonthlyTaxe = monthlyTaxe/2;
+                    halfAdditionalTaxe = additionalTaxe/2; 
+
+                    salary = (hours*normalTaxe)-(halfMonthlyTaxe+halfAdditionalTaxe);
+                }
+
+                else{
+                    salary = (hours*normalTaxe);
+                }  
+            }
+        }
+
+        else if (employeeType.intern() == "Hourly".intern() && employee.getSalary().getPaymentAgenda().intern() == "Monthly".intern()) {
+            hours = timecard.getNumberHours();
+            System.out.println("Horas trabalhadas "+hours);
+            int hoursWeek = 160;
+
+            //Hora extra
+            if(hours > hoursWeek){
+                System.out.println("Horas extra");
+                if (filiated) {
+                    monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
+                    additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
+
+                    extraTime = (hours - hoursWeek);
+                    salary = (hours*normalTaxe)+(extraTime*1.5*normalTaxe)-(monthlyTaxe + additionalTaxe);
+                }
+
+                else{
+                    extraTime = (hours - hoursWeek);
+                    salary = (hours*normalTaxe)+(extraTime*1.5*normalTaxe);
+                }  
+            }
+
+            //Sem hora extra
+            else{
+                System.out.println("Sem hora extra");
+                if (filiated) {
+                    monthlyTaxe = employee.getSyndicate().getTaxes().getMonthlyTaxe();
+                    additionalTaxe = employee.getSyndicate().getTaxes().getAdditionalTaxe();
+
+                    salary = (hours*normalTaxe)-(monthlyTaxe + additionalTaxe);
                 }
 
                 else{
