@@ -221,7 +221,7 @@ public class Payroll {
         }
     }
 
-    public void changeEmployeePaymentAgenda(ArrayList<Employee> employeesList) {
+    public static void changeEmployeePaymentAgenda(ArrayList<Employee> employeesList) {
 
         Scanner input = new Scanner(System.in);
         String name = new String();

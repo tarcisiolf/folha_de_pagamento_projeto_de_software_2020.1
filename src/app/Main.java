@@ -72,7 +72,7 @@ public class Main {
                     break;
 
                 case 9:
-                    Payroll.PaymentList(employeesList);
+                    Payroll.changeEmployeePaymentAgenda(employeesList);
                     break;
 
                 case 10:
