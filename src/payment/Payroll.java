@@ -55,53 +55,169 @@ public class Payroll {
             //System.out.println("\n");
 
             System.out.println("\n");
-            if (paymentAgenda.intern() == "Weekly".intern() && dayWeekString.intern() == "SEX".intern()) {
-                System.out.println("Pagamento Horista\n");
-                System.out.println(employee.printHourlyInfo(employee));
+            if (paymentAgenda.intern() == "Weekly".intern() && dayWeekString.intern() == "SEX".intern()){
 
-                double normalTaxe = employee.getSalary().getNormalTaxe();
-                
-                salary = employee.getSalary().calcSalary(employee, "Hourly", 0.0f, 0.0f, 0.0f, ((Hourly)employee).getTimecard(), normalTaxe, employee.getFiliated());
+                if (employee.getSalary().getEmployeeType().intern() == "Hourly".intern()) {
 
-                System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
-                System.out.println("O valor do pagamento é de R$" + salary);
+                    System.out.println("Pagamento Horista | Agenda: Semanalmente\n");
+                    System.out.println(employee.printHourlyInfo(employee));
+    
+                    double normalTaxe = employee.getSalary().getNormalTaxe();
+                    
+                    salary = employee.getSalary().calcSalary(employee, "Hourly", 0.0f, 0.0f, 0.0f, ((Hourly)employee).getTimecard(), normalTaxe, employee.getFiliated());
+    
+                    System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
+                    System.out.println("O valor do pagamento é de R$" + salary);
+    
+                    ((Hourly)employee).getTimecard().setNumberHours(0.0f);
+                    employee.getSalary().setPaymentDate(date);
+                }
 
-                ((Hourly)employee).getTimecard().setNumberHours(0.0f);
-                employee.getSalary().setPaymentDate(date);
+                else if (employee.getSalary().getEmployeeType().intern() == "Salaried".intern()) {
+                    
+                    System.out.println("Pagamento Salariado | Agenda: Semanalmente\n");
+                    System.out.println(employee.printSalariedInfo(employee));
+    
+                    double baseSalary = employee.getSalary().getBaseSalary();
+    
+                    salary = employee.getSalary().calcSalary(employee, "Salaried", ((Salaried)employee).getBaseSalary(), 0.0f, 0.0f, null, 0.0f, employee.getFiliated());
+    
+                    System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
+                    System.out.println("O valor do pagamento é de R$" + salary);
+    
+                    employee.getSalary().setPaymentDate(date);
+                }
+
+
+                else if (employee.getSalary().getEmployeeType().intern() == "Comissioned".intern()) {
+                    System.out.println("Pagamento Vendedor | Agenda: Semanalmente\n");
+                    System.out.println(employee.printComissionedInfo(employee));
+
+                    double baseSalary = ((Comissioned)employee).getBaseSalary();
+                    double comission = ((Comissioned)employee).getComission();
+                    double sales = ((Comissioned)employee).getSales().getValue();
+
+                    salary = employee.getSalary().calcSalary(employee ,"Comissioned", baseSalary, comission, sales, null, 0.0f, employee.getFiliated());
+
+                    System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
+                    System.out.println("O valor do pagamento é de R$" + salary);
+
+                    ((Comissioned)employee).getSales().setValue(0.0f);
+                    employee.getSalary().setPaymentDate(date);
+                }
+
             
             }
 
             else if(paymentAgenda.intern() == "Monthly".intern() && dayDate == lastDayMonth){
-                System.out.println("Pagamento Salariado\n");
-                System.out.println(employee.printSalariedInfo(employee));
 
-                double baseSalary = employee.getSalary().getBaseSalary();
+                if (employee.getSalary().getEmployeeType().intern() == "Salaried".intern()) {
 
-                salary = employee.getSalary().calcSalary(employee, "Salaried", ((Salaried)employee).getBaseSalary(), 0.0f, 0.0f, null, 0.0f, employee.getFiliated());
+                    System.out.println("Pagamento Salariado | Agenda: Mensalmente\n");
+                    System.out.println(employee.printSalariedInfo(employee));
+    
+                    double baseSalary = employee.getSalary().getBaseSalary();
+    
+                    salary = employee.getSalary().calcSalary(employee, "Salaried", ((Salaried)employee).getBaseSalary(), 0.0f, 0.0f, null, 0.0f, employee.getFiliated());
+    
+                    System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
+                    System.out.println("O valor do pagamento é de R$" + salary);
+    
+                    employee.getSalary().setPaymentDate(date);
+                }
 
-                System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
-                System.out.println("O valor do pagamento é de R$" + salary);
+                else if (employee.getSalary().getEmployeeType().intern() == "Hourly".intern()) {
 
-                employee.getSalary().setPaymentDate(date);
+                    System.out.println("Pagamento Horista | Agenda: Mensalmente\n");
+                    System.out.println(employee.printHourlyInfo(employee));
+    
+                    double normalTaxe = employee.getSalary().getNormalTaxe();
+                    
+                    salary = employee.getSalary().calcSalary(employee, "Hourly", 0.0f, 0.0f, 0.0f, ((Hourly)employee).getTimecard(), normalTaxe, employee.getFiliated());
+    
+                    System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
+                    System.out.println("O valor do pagamento é de R$" + salary);
+    
+                    ((Hourly)employee).getTimecard().setNumberHours(0.0f);
+                    employee.getSalary().setPaymentDate(date);
+                }
+
+                else if (employee.getSalary().getEmployeeType().intern() == "Comissioned".intern()) {
+
+                    System.out.println("Pagamento Vendedor | Agenda: Mensalmente\n");
+                    System.out.println(employee.printComissionedInfo(employee));
+
+                    double baseSalary = ((Comissioned)employee).getBaseSalary();
+                    double comission = ((Comissioned)employee).getComission();
+                    double sales = ((Comissioned)employee).getSales().getValue();
+
+                    salary = employee.getSalary().calcSalary(employee ,"Comissioned", baseSalary, comission, sales, null, 0.0f, employee.getFiliated());
+
+                    System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
+                    System.out.println("O valor do pagamento é de R$" + salary);
+
+                    ((Comissioned)employee).getSales().setValue(0.0f);
+                    employee.getSalary().setPaymentDate(date);
+                }
+ 
 
             }
 
             else if(paymentAgenda.intern() == "Two-Weekly".intern() && (weekMonth == 2 || weekMonth == 4) && (dayWeekString.intern() == "SEX".intern())){
-                System.out.println("Pagamento Vendedor\n");
-                System.out.println(employee.printComissionedInfo(employee));
 
-                double baseSalary = ((Comissioned)employee).getBaseSalary();
-                double comission = ((Comissioned)employee).getComission();
-                double sales = ((Comissioned)employee).getSales().getValue();
+                if (employee.getSalary().getEmployeeType().intern() == "Comissioned".intern()) {
 
-                salary = employee.getSalary().calcSalary(employee ,"Comissioned", baseSalary, comission, sales, null, 0.0f, employee.getFiliated());
+                    System.out.println("Pagamento Vendedor | Agenda: Bi-semanalmente\n");
+                    System.out.println(employee.printComissionedInfo(employee));
+    
+                    double baseSalary = ((Comissioned)employee).getBaseSalary();
+                    double comission = ((Comissioned)employee).getComission();
+                    double sales = ((Comissioned)employee).getSales().getValue();
+    
+                    salary = employee.getSalary().calcSalary(employee ,"Comissioned", baseSalary, comission, sales, null, 0.0f, employee.getFiliated());
+    
+                    System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
+                    System.out.println("O valor do pagamento é de R$" + salary);
+    
+                    ((Comissioned)employee).getSales().setValue(0.0f);
+                    employee.getSalary().setPaymentDate(date);
+                }
 
-                System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
-                System.out.println("O valor do pagamento é de R$" + salary);
+                else if (employee.getSalary().getEmployeeType().intern() == "Salaried".intern()) {
 
-                ((Comissioned)employee).getSales().setValue(0.0f);
-                employee.getSalary().setPaymentDate(date);
+                    System.out.println("Pagamento Salariado | Agenda: Bi-Semanalmente\n");
+                    System.out.println(employee.printSalariedInfo(employee));
+    
+                    double baseSalary = employee.getSalary().getBaseSalary();
+    
+                    salary = employee.getSalary().calcSalary(employee, "Salaried", ((Salaried)employee).getBaseSalary(), 0.0f, 0.0f, null, 0.0f, employee.getFiliated());
+    
+                    System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
+                    System.out.println("O valor do pagamento é de R$" + salary);
+    
+                    employee.getSalary().setPaymentDate(date);
+                }
+
+                else if (employee.getSalary().getEmployeeType().intern() == "Hourly".intern()) {
+                    
+                    System.out.println("Pagamento Horista | Agenda: Bi-semanalmente\n");
+                    System.out.println(employee.printHourlyInfo(employee));
+    
+                    double normalTaxe = employee.getSalary().getNormalTaxe();
+                    
+                    salary = employee.getSalary().calcSalary(employee, "Hourly", 0.0f, 0.0f, 0.0f, ((Hourly)employee).getTimecard(), normalTaxe, employee.getFiliated());
+    
+                    System.out.println("Foi feito o pagamento do empregado: "+employee.getName());
+                    System.out.println("O valor do pagamento é de R$" + salary);
+    
+                    ((Hourly)employee).getTimecard().setNumberHours(0.0f);
+                    employee.getSalary().setPaymentDate(date);
+                }
+
+
             }
+
+
         }
     }
 
