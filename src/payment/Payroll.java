@@ -30,11 +30,8 @@ public class Payroll {
 
         System.out.println("Digite a data de hoje no formato dd/MM/yyyy");
         date = input.nextLine();
-
-        //System.out.println("Data "+ date);
-        String paymentAgenda = new String();
-        //Paycheck newPaycheck = null;
-        
+  
+        String paymentAgenda = new String();     
         String[] dateSplit = date.split("/");
         dayDate = Integer.parseInt(dateSplit[0]);
 
@@ -45,14 +42,9 @@ public class Payroll {
             lastDayMonth = -1;
 
             paymentAgenda = employee.getSalary().getPaymentAgenda();
-            //System.out.println("Agenda de pagamento "+ paymentAgenda);
             dayWeekString = Day.getWeekDayString(date);
-            //System.out.println("Dia da semana "+ dayWeekString);
             weekMonth = Day.WeekMonth(date);
-            //System.out.println("Nº da semana do mês "+ weekMonth);
             lastDayMonth = Day.LastDayMonth(date);
-            //System.out.println("Último dia do mês "+ lastDayMonth);
-            //System.out.println("\n");
 
             System.out.println("\n");
             if (paymentAgenda.intern() == "Weekly".intern() && dayWeekString.intern() == "SEX".intern()){
@@ -216,7 +208,6 @@ public class Payroll {
 
 
             }
-
 
         }
     }
